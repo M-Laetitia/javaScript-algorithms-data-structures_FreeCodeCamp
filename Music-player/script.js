@@ -126,6 +126,13 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 };
 
+const pauseSong = () => {
+  userData.songCurrentTime = audio.currentTime;
+  playButton.classList.remove("playing")
+  audio.pause()// pause() is a method of the Web Audio API for pausing music files.
+};
+
+pauseButton.addEventListener("click",  pauseSong);
 
 playButton.addEventListener("click", () => {
   if (userData?.currentSong === null) {
