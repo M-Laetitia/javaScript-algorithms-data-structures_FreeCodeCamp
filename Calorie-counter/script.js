@@ -5,3 +5,8 @@ const addEntryButton = document.getElementById('add-entry');
 const clearButton = document.getElementById('clear');
 const output = document.getElementById('output');
 let isError = false;
+
+function cleanInputString(str) {
+    const regex = /[+-\s]/g;
+    return str.replace(regex, '');
+}
