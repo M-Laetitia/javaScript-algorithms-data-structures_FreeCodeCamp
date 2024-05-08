@@ -81,5 +81,7 @@ const allSongs = [
 
 // create a copy of the allSongs array without mutating the original. 
 let userData = {
-    songs : [...allSongs]
-};
+    songs: [...allSongs],
+    currentSong: null,
+    songCurrentTime: 0,
+  };
