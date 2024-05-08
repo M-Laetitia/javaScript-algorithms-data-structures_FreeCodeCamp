@@ -115,6 +115,25 @@ renderSongs(userData?.songs);
 
 //sort songs in alphabetical order by title. 
 //The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
+
+// const sortSongs = () => {
+//     userData?.songs.sort();
+// };
+
 const sortSongs = () => {
-    userData?.songs.sort();
+    userData?.songs.sort((a,b) => { //The sort() method accepts a compare callback function that defines the sort order.
+    
+    // the first condition (a.title < b.title) checks if the title of the first song is less than the title of the second song. If so, the first song is sorted before the second song.
+      if (a.title < b.title) {
+        return -1; // the sort() method is expecting a number to be returned
+      }
+  
+      if (a.title > b.title) {
+        return 1;
+      }
+  
+      return 0;
+    });
+
+    return userData?.songs;
 };
