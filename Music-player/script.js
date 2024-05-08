@@ -107,3 +107,10 @@ const renderSongs = (array) => {
 
     playlistSongs.innerHTML = songsHTML;
 };
+
+//Call the renderSongs function and pass in userData?.songs in order to finally display the songs in the UI.
+//Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined.
+renderSongs(userData?.songs);
+
+
+
