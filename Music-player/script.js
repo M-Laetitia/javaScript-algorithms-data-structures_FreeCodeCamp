@@ -126,6 +126,11 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 };
 
+// get the index of each song in the songs property of userData.
+const getCurrentSongIndex = () => {
+  return userData?.songs.indexOf(userData?.currentSong)
+}
+
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
   playButton.classList.remove("playing")
