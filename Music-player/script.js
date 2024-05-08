@@ -90,6 +90,11 @@ const playSong = (id) => {
   const song = userData?.songs.find((song) => song.id === id);
   audio.src = song.src; //  This tells the audio element where to find the audio data for the selected song.
   audio.title = song.title; // This tells the audio element what to display as the title of the song.
+
+  // Ensure it starts from the beginning by the use of the currentTime property of the audio object.
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+    audio.currentTime = 0;
+  }
 };
 
 const renderSongs = (array) => {
