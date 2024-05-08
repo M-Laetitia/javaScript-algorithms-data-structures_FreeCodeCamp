@@ -94,8 +94,16 @@ const playSong = (id) => {
   // Ensure it starts from the beginning by the use of the currentTime property of the audio object.
   if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
     audio.currentTime = 0;
+  } else {
+    audio.currentTime = userData?.songCurrentTime // Add an else block to handle the current song's position in the playlist.
   }
+  userData.currentSong = song; // update the current song being played 
+  playButton.classList.add("playing")// and the appearance of the playButton element.
+  audio.play(); // play the song - play() is a method from the web audio API for playing an mp3 file    
 };
+
+
+
 
 const renderSongs = (array) => {
     const songsHTML = array
