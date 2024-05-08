@@ -31,6 +31,7 @@ function addEntry() {
     entryNumber = targetInputContainer.querySelectorAll(); // The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
     const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
 
+    // template literal 
     const HTMLString = `
     <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
     <input type="text" id="${entryDropdown.value}-${entryNumber}-name" placeholder="Name" />
@@ -42,7 +43,24 @@ function addEntry() {
     placeholder="Calories"
     />`;
 
-    targetInputContainer.innerHTML += HTMLString;
+    // targetInputContainer.innerHTML += HTMLString;
+    targetInputContainer.insertAdjacentHTML("beforeend", HTMLString);// first argument is a string that specifies the position of the inserted element. The second argument is a string containing the HTML to be inserted.
+}
+
+function getCaloriesFromInputs(list) {
+    let calories = 0;
+  
+    for (const item of list) {
+      const currVal = cleanInputString(item.value);
+      const invalidInputMatch = isInvalidInput(currVal);
+  
+      if (invalidInputMatch) {
+        alert(`Invalid Input: ${invalidInputMatch[0]}`);
+        isError = true;
+        return null;
+      } 
+        calories += Number(currVal) // The Number constructor is a function that converts a value to a number. 
+    }
 }
 
 addEntryButton.addEventListener("click", addEntry);
