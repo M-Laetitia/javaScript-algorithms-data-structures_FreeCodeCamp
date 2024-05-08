@@ -113,4 +113,8 @@ const renderSongs = (array) => {
 renderSongs(userData?.songs);
 
 
-
+//sort songs in alphabetical order by title. 
+//The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
+const sortSongs = () => {
+    userData?.songs.sort();
+};
