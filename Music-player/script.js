@@ -77,4 +77,9 @@ const allSongs = [
       src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/chasing-that-feeling.mp3",
     },
   ];
-  
+
+
+// create a copy of the allSongs array without mutating the original. 
+let userData = {
+    songs : [...allSongs]
+};
