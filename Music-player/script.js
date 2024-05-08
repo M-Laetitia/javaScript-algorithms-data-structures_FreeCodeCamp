@@ -103,12 +103,13 @@ const playSong = (id) => {
 };
 
 
+
 const renderSongs = (array) => {
     const songsHTML = array
       .map((song)=> {      
         return `
       <li id="song-${song.id}" class="playlist-song">
-      <button class="playlist-song-info">
+      <button class="playlist-song-info" onclick="playSong(${song.id})">
           <span class="playlist-song-title">${song.title}</span>
           <span class="playlist-song-artist">${song.artist}</span>
           <span class="playlist-song-duration">${song.duration}</span>
@@ -125,6 +126,7 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 };
 
+
 playButton.addEventListener("click", () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
@@ -132,9 +134,6 @@ playButton.addEventListener("click", () => {
     playSong(userData?.currentSong.id);
   }
 });
-
-
-
 
 //sort songs in alphabetical order by title. 
 //The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
