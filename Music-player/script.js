@@ -103,8 +103,6 @@ const playSong = (id) => {
 };
 
 
-
-
 const renderSongs = (array) => {
     const songsHTML = array
       .map((song)=> {      
@@ -127,9 +125,15 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 };
 
-//Call the renderSongs function and pass in userData?.songs in order to finally display the songs in the UI.
-//Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined.
-renderSongs(userData?.songs);
+playButton.addEventListener("click", () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  }else {
+    playSong(userData?.currentSong.id);
+  }
+});
+
+
 
 
 //sort songs in alphabetical order by title. 
@@ -157,4 +161,8 @@ const sortSongs = () => {
     return userData?.songs;
 };
 
-renderSongs(sortSongs());
+// renderSongs(sortSongs());
+
+//Call the renderSongs function and pass in userData?.songs in order to finally display the songs in the UI.
+//Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined.
+renderSongs(userData?.songs);
