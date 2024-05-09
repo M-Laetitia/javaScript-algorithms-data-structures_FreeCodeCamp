@@ -99,7 +99,21 @@ const playSong = (id) => {
   }
   userData.currentSong = song; // update the current song being played 
   playButton.classList.add("playing")// and the appearance of the playButton element.
+  highlightCurrentSong()
   audio.play(); // play the song - play() is a method from the web audio API for playing an mp3 file    
+};
+
+//  creating a function to highlight any song that is being played.
+const highlightCurrentSong = () => {
+  const playlistSongElements = document.querySelectorAll(".playlist-song");
+  const songToHighlight = document.getElementById(`song-${userData?.currentSong?.id}`)
+  playlistSongElements.forEach((songEl) => {
+    songEl.removeAttribute("aria-current") // RemoveAttribute() method to remove the "aria-current" attribute.
+  });
+
+  if(songToHighlight) {
+    songToHighlight.setAttribute("aria-current", "true")
+  }
 };
 
 
