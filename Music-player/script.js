@@ -159,6 +159,22 @@ playButton.addEventListener("click", () => {
 
 nextButton.addEventListener('click', playNextSong)
 
+const playPreviousSong = () => {
+  // if(userData?.currentSong === null) {
+  //   return
+  // } else {
+  // }
+  if (userData?.currentSong === null) return;
+  else {
+    const currentSongIndex = getCurrentSongIndex();
+    const previousSong = userData?.songs[currentSongIndex - 1]
+    playSong(previousSong.id)
+  }
+};
+
+previousButton.addEventListener('click', playPreviousSong)
+
+
 //sort songs in alphabetical order by title. 
 //The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
 
