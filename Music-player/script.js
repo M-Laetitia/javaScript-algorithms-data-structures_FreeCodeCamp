@@ -99,8 +99,9 @@ const playSong = (id) => {
   }
   userData.currentSong = song; // update the current song being played 
   playButton.classList.add("playing")// and the appearance of the playButton element.
-  highlightCurrentSong()
-  setPlayerDisplay()
+  highlightCurrentSong();
+  setPlayerDisplay();
+  etPlayButtonAccessibleText();
   audio.play(); // play the song - play() is a method from the web audio API for playing an mp3 file    
 };
 
