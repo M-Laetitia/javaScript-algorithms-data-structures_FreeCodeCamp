@@ -138,8 +138,12 @@ const pauseSong = () => {
 };
 
 const playNextSong = () => {
-  if(userData?.currentSong === null) {
-    playSong(userData?.songs[0].id)
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSong = userData?.songs[currentSongIndex + 1]
+    playSong(nextSong.id)
   }
 }
 
@@ -152,6 +156,8 @@ playButton.addEventListener("click", () => {
     playSong(userData?.currentSong.id);
   }
 });
+
+nextButton.addEventListener('click', playNextSong)
 
 //sort songs in alphabetical order by title. 
 //The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
