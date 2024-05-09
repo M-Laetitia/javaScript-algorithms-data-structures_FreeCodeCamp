@@ -154,6 +154,7 @@ const deleteSong = (id) => {
 
 
 
+
 const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
   const songArtist = document.getElementById("player-song-artist");
@@ -254,6 +255,22 @@ const playPreviousSong = () => {
 
 previousButton.addEventListener('click', playPreviousSong)
 
+
+//set up an event listener which will detect when the currently playing song ends to start the next song
+audio.addEventListener("ended", () => {
+  const currentSongIndex = getCurrentSongIndex();
+  const nextSongExists = userData?.songs[currentSongIndex + 1] !== undefined;
+    if (nextSongExists) {
+      playNextSong();
+    } else {
+      userData.currentSong = null;
+      userData.songCurrentTime = 0;
+      pauseSong();
+      setPlayerDisplay();
+      highlightCurrentSong();
+      setPlayButtonAccessibleText();
+    }
+});
 
 //sort songs in alphabetical order by title. 
 //The sort() method converts elements of an array into strings and sorts them in place based on their values in the UTF-16 encoding.
