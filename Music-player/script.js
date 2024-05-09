@@ -103,7 +103,6 @@ const playSong = (id) => {
 };
 
 
-
 const renderSongs = (array) => {
     const songsHTML = array
       .map((song)=> {      
@@ -127,15 +126,22 @@ const renderSongs = (array) => {
 };
 
 // get the index of each song in the songs property of userData.
-const getCurrentSongIndex = () => {
+/*const getCurrentSongIndex = () => {
   return userData?.songs.indexOf(userData?.currentSong)
-}
+}*/
+const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
 
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
   playButton.classList.remove("playing")
   audio.pause()// pause() is a method of the Web Audio API for pausing music files.
 };
+
+const playNextSong = () => {
+  if(userData?.currentSong === null) {
+    playSong(userData?.songs[0].id)
+  }
+}
 
 pauseButton.addEventListener("click",  pauseSong);
 
