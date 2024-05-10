@@ -3,14 +3,11 @@ const textInput = document.getElementById('text-input')
 const result = document.getElementById('result')
 
 function formattedInput(input) {
-    const formattedInput = input.replace(/[^\w\s]|_/g, "").replace(/\s+/g, "");
-    const lowerCaseInput = formattedInput.toLowerCase();
-    const joinInput = lowerCaseInput.split("").join('')
-    return joinInput;
+    return input.replace(/[^\w\s]|_/g, "").replace(/\s+/g, "").toLowerCase().split("").join('');
 }
 
 checkBtn.addEventListener('click', () => {
-  const textInputValue = textInput.value
+    const textInputValue = textInput.value.trim();
   if(textInputValue == '') {
     alert("Please input a value")
   }
