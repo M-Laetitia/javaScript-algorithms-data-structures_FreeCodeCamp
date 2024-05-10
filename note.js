@@ -1,3 +1,6 @@
+// & template literals
+// & 
+
 Number() // The Number constructor is a function that converts a value to a number. 
 
 insertAdjacentHTML("beforeend", str);// first argument is a string that specifies the position of the inserted element. The second argument is a string containing the HTML to be inserted.
@@ -117,3 +120,36 @@ const parentElement = document.createElement("button")
 const parentElementText = document.createTextNode("Click me")
 // attach the text "Click me" to the button
 parentElement.appendChild(parentElementText)
+
+// ^ Date Formater
+
+// &  Built-in constructors that create objects
+// There are many built-in constructors that create objects. A constructor is like a regular function, but starts with a capital letter, and is initialized with the new operator.
+
+const currentDate = new Date();
+const dayOfTheMonth = currentDate.getDate();
+const month = currentDate.getMonth(); // Because the number this method returns is zero-based, you need to add 1 to it to get the expected month number.
+const year = currentDate.getFullYear(); 
+const hours = currentDate.getHours(); 
+const minutes = currentDate.getMinutes();
+
+// & Change event
+//the change event is used to detect when the value of an HTML element has changed:
+
+// &  split, reverse, and join methods. 
+// The split() method is used to divide a string into substrings based on a specified separator. It then returns these substrings as elements of an array.
+const greeting = "Hello World";
+greeting.split(); // ["Hello World"]
+
+//The split method takes in a parameter known as a separator. The separator is used to tell the computer where each split should occur.
+// returns ["h", "e", "l", "l", "o"]
+"hello".split(""); 
+
+// the reverse method. This method reverses the order of the elements in the array in place. 
+// returns [5, 4, 3, 2, 1]
+[1, 2, 3, 4, 5].reverse(); 
+
+//the join method. This method takes an array of elements and joins them into a string.
+// the join method also takes an optional separator. If you don't provide a separator, the default separator is a comma.
+// returns "1-2-3-4-5"
+[1, 2, 3, 4, 5].join("-");
