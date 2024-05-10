@@ -2,6 +2,12 @@ const checkBtn = document.getElementById('check-btn')
 const textInput = document.getElementById('text-input')
 const result = document.getElementById('result')
 
+function formattedInput(input) {
+    const formattedInput = input.replace(/[^\w\s]|_/g, "").replace(/\s+/g, "");
+    const lowerCaseInput = formattedInput.toLowerCase();
+    const joinInput = lowerCaseInput.split("").join('')
+    return joinInput;
+}
 
 checkBtn.addEventListener('click', () => {
   const textInputValue = textInput.value
@@ -9,25 +15,14 @@ checkBtn.addEventListener('click', () => {
     alert("Please input a value")
   }
 
-const clearInput = textInputValue.replace(/[^\w\s]|_/g, "").replace(/\s+/g, "");
-console.log('clear:', clearInput)
+  const cleanedInput = formattedInput(textInputValue);
+  const reversedInput = cleanedInput.split('').reverse().join('');
 
-  const formattedInput = clearInput.toLowerCase()
-  console.log('formatted:', formattedInput)
-  const inputArray = formattedInput.split("");
-  console.log('array:', inputArray)
-  const inputReserved = inputArray.slice().reverse()
-  console.log('reversed array:', inputReserved)
-
-  const firstArrayJoin = inputArray.join('')
-  console.log('array join', firstArrayJoin)
-  const secondArrayJoin = inputReserved.join('')
-  console.log('array join2', secondArrayJoin)
-  
-  if(firstArrayJoin === secondArrayJoin) {
+  if(cleanedInput === reversedInput) {
     result.innerText = `${textInputValue} is a palindrome`
   } else {
     result.innerText = `${textInputValue} is not a palindrome`
   }
 
 })
+
