@@ -45,5 +45,12 @@ taskForm.addEventListener('submit', (e) => {
         date: dateInput.value,
         description: descriptionInput.value,
     };
+
+    // saved the task in the taskData array
+    if (dataArrIndex === -1) {
+        taskData.unshift(taskObj);
+    }
+    
 });
+
 
