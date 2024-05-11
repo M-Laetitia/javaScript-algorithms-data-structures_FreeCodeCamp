@@ -190,7 +190,16 @@ headCoach.textContent = coachName;
 // creating an empty arrow function called setPlayerCards
 const setPlayerCards = (arr = players) => {
     // create a new array that will be responsible for adding the player card information to the page.
-    playerCards.innerHTML += arr.map(() => {
-
-    })
+    playerCards.innerHTML += arr.map(
+        ({ name, position, number, isCaptain, nickname }) => {
+          `
+            <div class="player-card">
+              <h2>${isCaptain ? "(Captain)" : ""} ${name}</h2>
+              <p>Position: ${position}</p>
+              <p>Number: ${number}</p>
+              <p>Nickname: ${nickname !== null ? nickname : "N/A"}</p>
+            </div>
+          `;
+        }
+    )
 }
