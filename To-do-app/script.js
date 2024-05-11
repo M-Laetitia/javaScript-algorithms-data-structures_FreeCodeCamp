@@ -15,3 +15,18 @@ const descriptionInput = document.getElementById("description-input");
 const taskData = []
 // varable to be used to track the state when editing and discarding tasks.
 let currentTask = {}
+
+openTaskFormBtn.addEventListener("click", () =>
+    taskForm.classList.toggle("hidden")
+  );
+  
+  closeTaskFormBtn.addEventListener("click", () => {
+    confirmCloseDialog.showModal();
+  });
+  
+  cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
+  
+  discardBtn.addEventListener("click", () => {
+    confirmCloseDialog.close();
+    taskForm.classList.toggle("hidden");
+});
