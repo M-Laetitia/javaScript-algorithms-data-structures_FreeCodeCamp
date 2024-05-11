@@ -30,3 +30,12 @@ openTaskFormBtn.addEventListener("click", () =>
     confirmCloseDialog.close();
     taskForm.classList.toggle("hidden");
 });
+
+// get the values from the input fields, save them into the taskData array, and display them on the page.
+taskForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // to stop the browser from refreshing the page after submitting the form.
+    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id) // implicit return
+    const taskObj = {
+        id: titleInput.value.toLowerCase()
+    };
+});
