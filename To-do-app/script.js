@@ -40,6 +40,10 @@ taskForm.addEventListener('submit', (e) => {
 
         // add a unique number to the end of the id value to make it truly unique.
         id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        //add the remaining properties to the taskObj object.
+        title: titleInput.value,
+        date: dateInput.value,
+        description: descriptionInput.value,
     };
 });
 
