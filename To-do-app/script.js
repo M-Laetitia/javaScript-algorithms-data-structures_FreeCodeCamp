@@ -39,19 +39,21 @@ const addOrUpdateTask = () => {
 };
 
 const updateTaskContainer = () => {
-    // display the task/s on the page
-    taskData.forEach(({id, title, date, description}) => {
-      (tasksContainer.innerHTML += `
-        <div class="task" id="${id}">
-          <p><strong>Title:</strong> ${title}</p>
-          <p><strong>Date:</strong> ${date}</p>
-          <p><strong>Description:</strong> ${description}</p>
-          <button type="button" class="btn">Edit</button>
-          <button type="button" class="btn">Delete</button>
-        </div>
-      `)
-    }
-  );
+  // clear out the existing contents of tasksContainer before adding a new task.
+  tasksContainer.innerHTML = ""
+  // display the task/s on the page
+  taskData.forEach(({id, title, date, description}) => {
+    (tasksContainer.innerHTML += `
+      <div class="task" id="${id}">
+        <p><strong>Title:</strong> ${title}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <button type="button" class="btn" onclick="editTask(this)">Edit</button>
+        <button type="button" class="btn" onclick="deleteTask(this)">Delete</button>
+      </div>
+    `)
+  });
+      
 };
 
 
