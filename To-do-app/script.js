@@ -16,6 +16,14 @@ const taskData = []
 // varable to be used to track the state when editing and discarding tasks.
 let currentTask = {}
 
+const reset = () => {
+    titleInput.value = "";
+    dateInput.value = "";
+    descriptionInput.value = "";
+    taskForm.classList.toggle("hidden");
+    currentTask = {};
+}
+
 openTaskFormBtn.addEventListener("click", () =>
     taskForm.classList.toggle("hidden")
   );
@@ -64,6 +72,8 @@ taskForm.addEventListener('submit', (e) => {
         `)
       }
     );
+
+    taskForm.classList.toggle("hidden");
     
 });
 
