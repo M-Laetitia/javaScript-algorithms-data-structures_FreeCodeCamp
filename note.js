@@ -179,3 +179,6 @@ const greeting = (name = "Anonymous") => {
 } 
 console.log(greeting("John")); // Hello John
 console.log(greeting()); // Hello Anonymous
+
+receiver += "Some value"
+element.property += someArray.map(() => {})
