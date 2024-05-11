@@ -184,3 +184,10 @@ typeOfSport.textContent = sport;
 teamName.textContent = team;
 worldCupYear.textContent = year;
 headCoach.textContent = coachName;
+
+
+// show player cards based on the selections made by the user in the Filter Teammates dropdown menu.
+// creating an empty arrow function called setPlayerCards
+const setPlayerCards = (arr = players) => {
+    
+}
