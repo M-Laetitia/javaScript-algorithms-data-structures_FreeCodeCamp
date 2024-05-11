@@ -1,5 +1,5 @@
 // & template literals
-// & 
+// & innerHTML / innerText / textContent
 
 Number() // The Number constructor is a function that converts a value to a number. 
 
@@ -122,7 +122,7 @@ const parentElementText = document.createTextNode("Click me")
 parentElement.appendChild(parentElementText)
 
 // ^ Date Formater
-
+// ^ -------------------------
 // &  Built-in constructors that create objects
 // There are many built-in constructors that create objects. A constructor is like a regular function, but starts with a capital letter, and is initialized with the new operator.
 
@@ -153,3 +153,8 @@ greeting.split(); // ["Hello World"]
 // the join method also takes an optional separator. If you don't provide a separator, the default separator is a comma.
 // returns "1-2-3-4-5"
 [1, 2, 3, 4, 5].join("-");
+
+
+// ^ Date Formater
+// ^ -------------------------
+// & 
