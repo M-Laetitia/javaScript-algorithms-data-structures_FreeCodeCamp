@@ -174,5 +174,13 @@ const myFavoriteFootballTeam = {
 
 Object.freeze(myFavoriteFootballTeam);
 
-const sport = myFavoriteFootballTeam.sport;
-const team = myFavoriteFootballTeam.team;
+// const sport = myFavoriteFootballTeam.sport;
+// const team = myFavoriteFootballTeam.team;
+const { sport, team, year, players } = myFavoriteFootballTeam;
+const { coachName } = myFavoriteFootballTeam.headCoach;
+
+// Asign variable to textContent.
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
