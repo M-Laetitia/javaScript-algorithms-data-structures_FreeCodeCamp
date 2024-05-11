@@ -155,6 +155,27 @@ greeting.split(); // ["Hello World"]
 [1, 2, 3, 4, 5].join("-");
 
 
-// ^ Date Formater
+// ^ Football team cards
 // ^ -------------------------
-// & 
+
+// & Object.freeze(obj)
+// which will freeze this object and prevent any changes being made to it.
+Object.freeze(object)
+
+// & Object destructuring syntax
+// The object destructuring syntax allows you to unpack values from arrays and objects:
+const developerObj = {
+  name: "Jessica Wilkins",
+  isDeveloper: true
+};
+
+// Object destructuring
+const { name, isDeveloper } = developerObj;
+
+// & Function parameters
+// Function parameters can be initialized with default values. If a function is called without an argument, then the default value will be used:
+const greeting = (name = "Anonymous") => {
+  return "Hello " + name;
+} 
+console.log(greeting("John")); // Hello John
+console.log(greeting()); // Hello Anonymous
