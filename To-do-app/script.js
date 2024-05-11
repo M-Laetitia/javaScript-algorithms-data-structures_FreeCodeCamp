@@ -53,9 +53,17 @@ const updateTaskContainer = () => {
       </div>
     `)
   });
-      
 };
 
+const deleteTask = (buttonEl) => {
+  const dataArrIndex = taskData.findIndex(
+    (item) => item.id === buttonEl.parentElement.id
+  );
+  // remove the task from the DOM using remove() 
+  buttonEl.parentElement.remove();
+  // and from the taskData array using splice().
+  taskData.splice(dataArrIndex,1)
+}
 
 const reset = () => {
     titleInput.value = "";
