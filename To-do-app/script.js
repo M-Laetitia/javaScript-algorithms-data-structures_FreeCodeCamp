@@ -16,6 +16,45 @@ const taskData = []
 // varable to be used to track the state when editing and discarding tasks.
 let currentTask = {}
 
+// get the values from the input fields, save them into the taskData array, and display them on the page.
+const addOrUpdateTask = () => {
+  const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id) // implicit return
+  const taskObj = {
+      // id: titleInput.value.toLowerCase().split(" ").join("-") // to get a final result with a hyphenated string.
+
+      // add a unique number to the end of the id value to make it truly unique.
+      id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+      //add the remaining properties to the taskObj object.
+      title: titleInput.value,
+      date: dateInput.value,
+      description: descriptionInput.value,
+  };
+
+  // saved the task in the taskData array
+  if (dataArrIndex === -1) {
+      taskData.unshift(taskObj);
+  }
+  updateTaskContainer()
+  reset()
+};
+
+const updateTaskContainer = () => {
+    // display the task/s on the page
+    taskData.forEach(({id, title, date, description}) => {
+      (tasksContainer.innerHTML += `
+        <div class="task" id="${id}">
+          <p><strong>Title:</strong> ${title}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Description:</strong> ${description}</p>
+          <button type="button" class="btn">Edit</button>
+          <button type="button" class="btn">Delete</button>
+        </div>
+      `)
+    }
+  );
+};
+
+
 const reset = () => {
     titleInput.value = "";
     dateInput.value = "";
@@ -46,42 +85,10 @@ openTaskFormBtn.addEventListener("click", () =>
     reset();
 });
 
-// get the values from the input fields, save them into the taskData array, and display them on the page.
-taskForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // to stop the browser from refreshing the page after submitting the form.
-    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id) // implicit return
-    const taskObj = {
-        // id: titleInput.value.toLowerCase().split(" ").join("-") // to get a final result with a hyphenated string.
 
-        // add a unique number to the end of the id value to make it truly unique.
-        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-        //add the remaining properties to the taskObj object.
-        title: titleInput.value,
-        date: dateInput.value,
-        description: descriptionInput.value,
-    };
-
-    // saved the task in the taskData array
-    if (dataArrIndex === -1) {
-        taskData.unshift(taskObj);
-    }
-
-    // display the task/s on the page
-    taskData.forEach(({id, title, date, description}) => {
-        (tasksContainer.innerHTML += `
-          <div class="task" id="${id}">
-            <p><strong>Title:</strong> ${title}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Description:</strong> ${description}</p>
-            <button type="button" class="btn">Edit</button>
-            <button type="button" class="btn">Delete</button>
-          </div>
-        `)
-      }
-    );
-
-    // taskForm.classList.toggle("hidden");
-    reset();
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // to stop the browser from refreshing the page after submitting the form.
+  addOrUpdateTask();
 });
 
 
