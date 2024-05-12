@@ -31,10 +31,10 @@ const decimalToBinaryFirst = (input) => {
   }
 
   result.innerText = remainders.reverse().join("")
-}
+};
 
 // ^ after refactoring
-const decimalToBinary = (input) => {
+const decimalToBinarySecond = (input) => {
   let binary = "";
 
   if (input === 0) {
@@ -48,6 +48,16 @@ const decimalToBinary = (input) => {
 
   result.innerText = binary;
 };
+
+// ^ Recursive function 
+const decimalToBinary = (input) => {
+  if (input === 0) {
+    return "";
+  } else {
+    return decimalToBinary(Math.floor(input / 2) ) +  (input %2);
+  };
+};
+
 
 const checkUserInput = () => {
   console.log(numberInput.value);
