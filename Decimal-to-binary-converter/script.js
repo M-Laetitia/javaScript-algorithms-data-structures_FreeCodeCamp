@@ -70,6 +70,7 @@ const checkUserInput = () => {
 
   decimalToBinary(parseInt(numberInput.value));
   numberInput.value = "";
+  result.textContent = decimalToBinary();
 };
 
 // Zvent listener to call the function when users click the Convert button. The event listener should listen for click events and take a reference to the checkUserInput function as a callback. Function references are not called with parentheses.
