@@ -1,5 +1,9 @@
 // & template literals
-// & innerHTML / innerText / textContent
+// & innerHTML / innerText / textContent /  string interpolation / 
+
+
+
+// & --------------
 
 Number() // The Number constructor is a function that converts a value to a number. 
 
@@ -182,3 +186,166 @@ console.log(greeting()); // Hello Anonymous
 
 receiver += "Some value"
 element.property += someArray.map(() => {})
+
+// ^ TO DO APP -------------------------
+// ^ -----------------------------------
+// ^ handle form inputs, manage local storage, perform CRUD (Create, Read, Update, Delete) operations on tasks, implement event listeners, and toggle UI elements.
+
+// & ShowModal() method 
+// The HTML dialog element has a showModal() method that can be used to display a modal dialog box on a web page.
+dialogElement.showModal();
+dialogElement.close();
+
+// &  the findIndex() method.
+// The findIndex() array method finds and returns the index of the first element in an array that meets the criteria specified by a provided testing function. If no such element is found, the method returns -1.
+
+const numbers = [3, 1, 5, 6];
+const firstNumLargerThanThree = numbers.findIndex((num) => num > 3);
+
+console.log(firstNumLargerThanThree); // prints index 2
+
+// & Date.now()
+// Date.now() returns the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC.
+console.log(Date.now()); // 1628586800000
+
+// & unshift()
+// unshift() is an array method that is used to add one or more elements to the beginning of an array.
+
+// & forEach()
+// take 3 arguments: element, index and the array itself.
+
+// & splice()
+// splice() is an array method that modifies arrays by removing, replacing, or adding elements at a specified index, while also returning the removed elements. It can take up to three arguments: the first one is the mandatory index at which to start, the second is the number of items to remove, and the third is an optional replacement element.
+
+// & local storage
+// For instance, the setItem() method is used to save an item, and the getItem() method retrieves the item. To delete a specific item, you can utilize the removeItem() method, or if you want to delete all items in the storage, you can use clear().
+localStorage.setItem("key", value); // value could be string, number, or any other data type
+localStorage.getItem("key")
+localStorage.removeItem("key")
+localStorage.clear()
+
+//everything save in localStorage needs to be in string format.
+JSON.stringify()
+JSON.parse()
+
+// ^ Decimal to binary converter -------
+// ^ -----------------------------------
+// ^ learn about both number systems and about recursion by using it to perform the conversions.
+
+// Since you want to perform an action when the Enter key is pressed, the most helpful property is key, which tells you the string value of the key that was pressed.
+// Note: Since the Enter and Return keys have similar functions, they both have the same string value of Enter.
+if(e.key == "Enter"){
+  checkUserInput()
+}
+
+// & False / truthy values
+// common falsy values :  null, undefined, the number 0, and empty strings.
+
+// Rather than check if a value is equal to a falsy value, you can use the logical NOT operator (!) to check if the value itself is falsy. 
+const num = 0;
+
+console.log(num === 0); // true
+console.log(!num); // true
+
+// & parseInt()
+// to check and normalize numbers in JavaScript is to use the built-in parseInt() function, which converts a string into an integer or whole number. 
+// parseInt() takes at least one argument, a string to be converted into an integer, and returns either an integer or NaN which stands for Not a Number
+
+// & IsNaN()
+isNaN("test"); // true
+isNaN(2); // false
+isNaN("3.5"); // false
+
+// & The remainder operator (%)
+// the remainder operator (%), which returns the remainder of the division of two numbers. 
+
+// & Recursion 
+const a = () => {
+  return "freeCodeCamp " + b();
+};
+const b = () => {
+  return "is " + c();
+};
+const c = () => {
+  return "awesome!";
+};
+console.log(a()) // return : freeCodeCamp is awesome!
+
+
+// Stack is a data structure where items are stored in a LIFO (last-in-first-out) manner.
+// The call stack is a collection of function calls stored in a stack structure. When you call a function, it is added to the top of the stack, and when it returns, it is removed from the top / end of the stack.
+// creating mock call stack.
+
+const callStack = [
+  // since a() calls b(), the function b() is added to the call stack.
+  'a(): returns "freeCodeCamp " + b()',
+  // since b() calls c(), the function c() is added to the call stack.
+  'b(): returns "is " + c()',
+
+  'c(): returns "awesome!"'
+];
+
+const callStack = [
+  'a(): returns "freeCodeCamp " + b()',
+  'b(): returns "is " + "awesome!"'
+];
+
+const callStack = [];
+const a = () => {
+  return "freeCodeCamp " + b();
+};
+const b = () => {
+  return "is " + c();
+};
+const c = () => {
+  return "awesome!";
+};
+console.log(a());
+
+// The base case is when the function stops calling itself, and it is a good idea to write it first.
+// Recursive functions also have a recursive case, which is where the function calls itself.
+const countdown = (number) => {
+  console.log(number);
+  // base case : 
+  if (number === 0){
+    return;
+  }
+};
+
+// When writing the recursive case, you need to remember two things:
+
+// What is the base case?
+// What is the least amount of work you need to do to get closer to the base case?
+if (number === 0) {
+  return;
+} else {
+  // Since the base case is when number is equal to 0, you need to call countdown() again while also lowering the value of number by 1.
+  countdown(number - 1)
+}
+
+const countDownAndUp = (number) => {
+  console.log(number);
+
+  if (number === 0) {
+    console.log("Reached base case");
+    return;
+  } else {
+    countDownAndUp(number - 1);
+    console.log(number);
+  }
+};
+
+countDownAndUp(3);
+
+// & String()
+// For a reliable way to convert a value into a string, even falsy values like null and undefined
+
+// & setTimeout()
+// The setTimeout function takes two arguments: a callback function and a number representing the time in milliseconds to wait before executing the callback function.
+setTimeout(() => {
+  console.log("Hello, world!");
+}, 3000);
+
+// ^ Roman numeral converter project ---
+// ^ -----------------------------------
+// ^ 
