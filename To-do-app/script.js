@@ -12,7 +12,8 @@ const descriptionInput = document.getElementById("description-input");
 
 
 // array to store all the tasks along with their associated data
-const taskData = []
+// Set taskData to the retrieval of data from local storage or an empty array.
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
 // varable to be used to track the state when editing and discarding tasks.
 let currentTask = {}
 
@@ -32,8 +33,11 @@ const addOrUpdateTask = () => {
 
   // saved the task in the taskData array
   if (dataArrIndex === -1) {
-      taskData.unshift(taskObj);
+    taskData.unshift(taskObj);
+  } else {
+    taskData[dataArrIndex] = taskObj
   }
+  localStorage.setItem("data", JSON.stringify(taskData))
   updateTaskContainer()
   reset()
 };
@@ -63,6 +67,7 @@ const deleteTask = (buttonEl) => {
   buttonEl.parentElement.remove();
   // and from the taskData array using splice().
   taskData.splice(dataArrIndex,1)
+  localStorage.setItem("data", JSON.stringify(taskData))
 }
 
 const editTask = (buttonEl) => {
@@ -82,11 +87,17 @@ const editTask = (buttonEl) => {
   }
 
 const reset = () => {
+    addOrUpdateTaskBtn.innerText = "Add Task"
     titleInput.value = "";
     dateInput.value = "";
     descriptionInput.value = "";
     taskForm.classList.toggle("hidden");
     currentTask = {};
+}
+
+// check if there's a task inside taskData using the length of the array
+if (taskData.length) {
+  updateTaskContainer()
 }
 
 openTaskFormBtn.addEventListener("click", () =>
@@ -96,11 +107,13 @@ openTaskFormBtn.addEventListener("click", () =>
   closeTaskFormBtn.addEventListener("click", () => {
     //  check if there is some text present in the input fields
     const formInputsContainValues = titleInput.value || dateInput.value || descriptionInput.value;
-    if (formInputsContainValues) {
-        confirmCloseDialog.showModal();
-      } else {
-        reset();
-      }
+    const formInputValuesUpdated = titleInput.value !== currentTask.title || dateInput.value !== currentTask.date || descriptionInput.value !== currentTask.description;
+
+    if (formInputsContainValues && formInputValuesUpdated ) {
+      confirmCloseDialog.showModal();
+    } else {
+      reset();
+    }
   });
 
   cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
@@ -111,10 +124,20 @@ openTaskFormBtn.addEventListener("click", () =>
     reset();
 });
 
-
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault(); // to stop the browser from refreshing the page after submitting the form.
   addOrUpdateTask();
 });
 
+
+
+// ^ Local storage
+// tranform the array into string so it can be saved in localStorage
+localStorage.setItem("data", JSON.stringify(myTaskArr));
+const getTaskArr = localStorage.getItem("data")
+console.log(getTaskArr)
+
+// to get the data array again
+const getTaskArrObj =JSON.parse(localStorage.getItem('data'))
+console.log(getTaskArrObj)
 
