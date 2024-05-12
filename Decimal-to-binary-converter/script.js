@@ -23,7 +23,12 @@ const decimalToBinary = (input) => {
   console.log("Inputs: ", inputs);
   console.log("Quotients: ", quotients);
   console.log("Remainders: ", remainders);
-  
+
+  if (input === 0) {
+    result.innerText = "0";
+    return;
+  }
+
   result.innerText = remainders.reverse().join("")
 }
 
