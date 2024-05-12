@@ -58,19 +58,41 @@ const decimalToBinary = (input) => {
   }
 };
 
+const showAnimation = () => {
+  console.log("free")
+  console.log("Code")
+  // setTimeout() function is asynchronous
+  setTimeout(() => {
+    console.log("free");
+  }, 500);
+  setTimeout(() => {
+    console.log("Code");
+  }, 1000);
+  setTimeout(() => {
+    console.log("Camp");
+  }, 1500);
+}
 
 const checkUserInput = () => {
   console.log(numberInput.value);
-  
+  const inputInt = parseInt(numberInput.value)
+
   // if(numberInput.value === "")
-  if (!numberInput.value || isNaN(parseInt(numberInput.value))) {
+  if (!numberInput.value || isNaN(inputInt)) {
     alert('Please provide a decimal number');
     return;
   }
 
-  decimalToBinary(parseInt(numberInput.value));
+  if (inputInt === 5) {
+    showAnimation();
+    return;
+  }
+
+  // decimalToBinary(inputInt);
+  // result.textContent = decimalToBinary();
+
+  result.textContent = decimalToBinary(inputInt);
   numberInput.value = "";
-  result.textContent = decimalToBinary();
 };
 
 // Zvent listener to call the function when users click the Convert button. The event listener should listen for click events and take a reference to the checkUserInput function as a callback. Function references are not called with parentheses.
