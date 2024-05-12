@@ -2,6 +2,24 @@ const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
 
+const animationData = [
+  {
+    inputVal: 5,
+    marginTop: 300,
+    addElDelay: 1000
+  },
+  {
+    inputVal: 2,
+    marginTop: -200,
+    addElDelay: 1500
+  },
+   {
+    inputVal: 1,
+    marginTop: -200,
+    addElDelay: 2000
+  }
+]
+
 // ^ before refactoring
 const decimalToBinaryFirst = (input) => {
   const inputs = [];
@@ -59,19 +77,22 @@ const decimalToBinary = (input) => {
 };
 
 const showAnimation = () => {
-  console.log("free")
-  console.log("Code")
   // setTimeout() function is asynchronous
-  setTimeout(() => {
-    console.log("free");
-  }, 500);
-  setTimeout(() => {
-    console.log("Code");
-  }, 1000);
-  setTimeout(() => {
-    console.log("Camp");
-  }, 1500);
-}
+  // setTimeout(() => {
+  //   console.log("free");
+  // }, 500);
+  result.innerText = "Call Stack Animation"
+  animationData.forEach((obj) => {
+    setTimeout(() => {
+      animationContainer.innerHTML += `
+      <p id="${obj.inputVal}" style="margin-top: ${obj.marginTop}px;" class="animation-frame">
+        decimalToBinary(${obj.inputVal})
+      </p>
+      `;
+    }, obj.addElDelay);
+  });
+};
+
 
 const checkUserInput = () => {
   console.log(numberInput.value);
