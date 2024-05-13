@@ -35,3 +35,18 @@ convertBtn.addEventListener('click', () => {
       return;
     }
 });
+
+
+function convert(nb) {
+  const romanNb = []
+  
+  correspondance.forEach((arr) => {
+    while( nb >= arr[1]) {     
+      romanNb.push(arr[0])  
+      nb -= arr[1];
+      console.log("ok", nb, romanNb)
+    }
+  })
+    const result = romanNb.join('')
+    return result
+}
