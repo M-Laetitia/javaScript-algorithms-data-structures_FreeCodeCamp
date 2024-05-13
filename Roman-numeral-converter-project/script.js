@@ -1,3 +1,5 @@
+// clear input
+
 const convertBtn = document.getElementById('convert-btn');
 const number = document.getElementById('number');
 const output = document.getElementById('output')
@@ -18,8 +20,9 @@ const correspondance =  [
   ['I', 1]
 ];
 
-convertBtn.addEventListener('click', () => {
+convertBtn.addEventListener('click', (e) => {
   // const numberValue = Number(number.value); 
+  e.preventDefault();
   const numStr = document.getElementById('number').value;
   const int = parseInt(numStr, 10);
 
@@ -27,6 +30,18 @@ convertBtn.addEventListener('click', () => {
     output.innerText = convert(int);
   }
 });
+
+number.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  if(e.key == "Enter"){
+    const numStr = document.getElementById('number').value;
+    const int = parseInt(numStr, 10);
+  
+    if (isValid(numStr, int)) {
+      output.innerText = convert(int);
+    }
+  }
+})
 
 
 function convert(nb) {
