@@ -34,6 +34,9 @@ convertBtn.addEventListener('click', () => {
       output.innerText = "Please enter a number less than or equal to 3999";
       return;
     }
+
+    const result = convert(numberValue);
+    output.innerText = result
 });
 
 
