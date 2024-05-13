@@ -20,28 +20,28 @@ const correspondance =  [
   ['I', 1]
 ];
 
-convertBtn.addEventListener('click', (e) => {
-  // const numberValue = Number(number.value); 
-  e.preventDefault();
+
+
+function handleConversion() {
   const numStr = document.getElementById('number').value;
   const int = parseInt(numStr, 10);
 
   if (isValid(numStr, int)) {
     output.innerText = convert(int);
   }
+}
+
+convertBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  handleConversion();
 });
 
 number.addEventListener("keydown", (e) => {
   e.preventDefault();
   if(e.key == "Enter"){
-    const numStr = document.getElementById('number').value;
-    const int = parseInt(numStr, 10);
-  
-    if (isValid(numStr, int)) {
-      output.innerText = convert(int);
-    }
+    handleConversion();
   }
-})
+});
 
 
 function convert(nb) {
