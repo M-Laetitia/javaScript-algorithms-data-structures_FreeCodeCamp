@@ -16,8 +16,12 @@ const isSpam = (msg) => denyList.some((regex) => regex.test(msg))
 
 // use the alternate sequence | to match either please help or assist me.
 const helpRegex = /please help|assist me/i;
-const denyList = [helpRegex];
-
+// the + quantifier can be used - this matches one or more consecutive occurrence.
+// capture group using ()
+// mark the capture group as optional with the ? quantifier
+//  turn it into a non-capturing group.  add ?: after the opening parenthesis of a group
+const dollarRegex = /[0-9]+ (?:hundred|thousand|million|billion)? dollars/i;
+const denyList = [helpRegex, dollarRegex];
 
 checkMessageButton.addEventListener("click", () => {
     if (messageInput.value === "") {
