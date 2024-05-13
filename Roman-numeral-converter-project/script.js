@@ -20,8 +20,6 @@ const correspondance =  [
   ['I', 1]
 ];
 
-
-
 function handleConversion() {
   const numStr = document.getElementById('number').value;
   const int = parseInt(numStr, 10);
@@ -31,6 +29,7 @@ function handleConversion() {
   }
 }
 
+// event Listener
 convertBtn.addEventListener('click', (e) => {
   e.preventDefault();
   handleConversion();
@@ -43,7 +42,6 @@ number.addEventListener("keydown", (e) => {
   }
 });
 
-
 function convert(nb) {
   const romanNb = []
   
@@ -51,7 +49,7 @@ function convert(nb) {
     while( nb >= arr[1]) {     
       romanNb.push(arr[0])  
       nb -= arr[1];
-      console.log("ok", nb, romanNb)
+      // console.log("ok", nb, romanNb)
     }
   })
     const result = romanNb.join('')
@@ -59,6 +57,7 @@ function convert(nb) {
 }
 
 
+// check if the value is a valid one and handle error msg
 const isValid = (str, int) => {
   let errText = '';
 
@@ -72,7 +71,6 @@ const isValid = (str, int) => {
     // no error
     return true; 
   }
-
   // display error text on the page
   output.innerText = errText;
 
