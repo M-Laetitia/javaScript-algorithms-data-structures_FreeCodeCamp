@@ -19,25 +19,13 @@ const correspondance =  [
 ];
 
 convertBtn.addEventListener('click', () => {
-    const numberValue = Number(number.value); 
+  // const numberValue = Number(number.value); 
+  const numStr = document.getElementById('number').value;
+  const int = parseInt(numStr, 10);
 
-    if (!number.value || number.value.match(/[e.]/g)) {
-      output.innerText = "Please enter a valid number";
-      return;
-    };
-
-    if(numberValue < 0) {
-      output.innerText = "Please enter a number greater than or equal to 1";
-      return;
-    }
-  
-    if(numberValue >= 4000) {
-      output.innerText = "Please enter a number less than or equal to 3999";
-      return;
-    }
-
-    const result = convert(numberValue);
-    output.innerText = result
+  if (isValid(numStr, int)) {
+    output.innerText = convert(int);
+  }
 });
 
 
@@ -53,4 +41,25 @@ function convert(nb) {
   })
     const result = romanNb.join('')
     return result
+}
+
+
+const isValid = (str, int) => {
+  let errText = '';
+
+  if (!str || str.match(/[e.]/g)) {
+    errText = "Please enter a valid number";
+  } else if(int < 1) {
+    errText = "Please enter a number greater than or equal to 1";
+  } else if(int >= 4000) {
+    errText = "Please enter a number less than or equal to 3999";
+  } else {
+    // no error
+    return true; 
+  }
+
+  // display error text on the page
+  output.innerText = errText;
+
+  return false;
 }
