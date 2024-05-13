@@ -19,9 +19,16 @@ const helpRegex = /please help|assist me/i;
 // the + quantifier can be used - this matches one or more consecutive occurrence.
 // capture group using ()
 // mark the capture group as optional with the ? quantifier
-//  turn it into a non-capturing group.  add ?: after the opening parenthesis of a group
+// turn it into a non-capturing group.  add ?: after the opening parenthesis of a group
 const dollarRegex = /[0-9]+ (?:hundred|thousand|million|billion)? dollars/i;
-const denyList = [helpRegex, dollarRegex];
+
+// Replace the e characters in the regular expression with character classes that match e and 3 and o to 0
+// Check for spaces before and after the pattern with \s 
+// Replace thz first \s character with a non-capturing group that matches \s or ^.
+//  use the $ anchor to match the end of the string.
+const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;
+
+const denyList = [helpRegex, dollarRegex, freeRegex];
 
 checkMessageButton.addEventListener("click", () => {
     if (messageInput.value === "") {
