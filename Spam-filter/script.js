@@ -9,10 +9,15 @@ const checkMessageButton = document.getElementById('check-message-btn');
 
 // implicite return
 // const isSpam = (msg) => msg.match(helpRegex); // return an array
-const isSpam = (msg) => helpRegex.test(msg); // return true or false
+// const isSpam = (msg) => helpRegex.test(msg); // return true or false
+
+// .some() method to check if testing a msg on any of a denyList regular expressions returns true.
+const isSpam = (msg) => denyList.some((regex) => regex.test(msg))
 
 // use the alternate sequence | to match either please help or assist me.
 const helpRegex = /please help|assist me/i;
+const denyList = [helpRegex];
+
 
 checkMessageButton.addEventListener("click", () => {
     if (messageInput.value === "") {
