@@ -15,6 +15,8 @@ const sortInputArray = (event) => {
 
     // convert result (string) into numbers with Number()
     const inputValues = [...document.getElementsByClassName("values-dropdown")].map((dropdown) => Number(dropdown.value));
+
+    updateUI(inputValues)
 }
 
 // update the display with the sorted numbers. set a fallback value for array to be an empty array. 
