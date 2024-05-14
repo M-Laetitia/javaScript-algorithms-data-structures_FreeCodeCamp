@@ -34,8 +34,16 @@ const bubbleSort = (array) => {
         // use a nested for loop. This loop should iterate through every element in the array except the last one.
         for(let j = 0; j < array.length - 1; j++) {
             console.log(array, array[j], array[j + 1]);
+            // check if the current element is larger than the next element. 
+            if (array[j] > array[j + 1]) {
+                // if condition is true, swap the two elements, "bubbling" the larger element up toward the end of the array.
+                const temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
         }
     }
+    return array;
 }
 
 sortButton.addEventListener("click", sortInputArray);
