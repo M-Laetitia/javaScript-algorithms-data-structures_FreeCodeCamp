@@ -15,7 +15,15 @@ const sortInputArray = (event) => {
 
     // convert result (string) into numbers with Number()
     const inputValues = [...document.getElementsByClassName("values-dropdown")].map((dropdown) => Number(dropdown.value));
+}
 
+// update the display with the sorted numbers. set a fallback value for array to be an empty array. 
+const updateUI = (array = []) => {
+    // pass it an empty callback which takes num and i as the parameters.
+    array.forEach((num, i) => {
+        const outputValueNode = document.getElementById(`output-value-${i}`);
+        outputValueNode.innerText = num; 
+    }) 
 }
 
 sortButton.addEventListener("click", sortInputArray);
