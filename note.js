@@ -1,5 +1,6 @@
 // & template literals
 // & innerHTML / innerText / textContent /  string interpolation / 
+// & getElementsByClassName()
 
 
 
@@ -346,6 +347,75 @@ setTimeout(() => {
   console.log("Hello, world!");
 }, 3000);
 
-// ^ Roman numeral converter project ---
+// ^ Spam filter -----------------------
 // ^ -----------------------------------
-// ^ 
+// ^ regex, capture groups, positive lookaheads, negative lookaheads, and other techniques to match any text
+
+const  isSpam=(msg)=>{
+  return  false;
+}
+
+const isSpam = (msg) => false;
+
+
+// & Regex > flags
+// Regular expressions can take flags to modify their behavior. Flags are added after the trailing backslash. 
+const helpRegex = /hello/i; //the i flag can be used to make the expression ignore case, causing it to match hello, HELLO, and Hello for the expression /hello/.
+
+// & .match() method
+// Strings have a .match() method, which accepts a regular expression as an argument and determines if the string matches that expression.
+// &  .test() method
+// .test() method test if a string matches the pattern. Unlike .match(), .test() returns a boolean value indicating whether or not the string matches the pattern.
+// La méthode .match() renvoie un tableau contenant les correspondances trouvées, ou null s'il n'y a aucune correspondance.
+[ 'please help',
+  index: 0,
+  input: 'please help',
+  groups: undefined ]
+
+// & Alternate sequence | 
+// The alternate sequence | can be used to match either the text on the left or the text on the right of the |. For example, the regular expression /yes|no/ will match either yes or no.
+
+// & Character class
+// A character class is defined by square brackets, and matches any character within the brackets.  For example, [a-z] matches any character from a to z.
+
+// & Capture group
+// A capture group is a way to define a part of the expression that should be captured and saved for later reference. 
+
+// & ? quantifier
+// mark the entire pattern as an optional match. The ? quantifier matches zero or one occurrence of the preceding character or group. For example, the regular expression /colou?r/ matches both color and colour, because the u is optional.
+
+// & meta character \s
+// the meta character \s, which will match spaces, tabs, and line breaks.
+
+// & ^ anchor
+// use the ^ anchor. This asserts that your pattern match starts at the beginning of the full string.
+
+// ^ Number sorter ---------------------
+// ^ -----------------------------------
+// ^ Sorting algorithm
+
+// &  fallback value
+//  if writing algorithms that won't immediately have a return value, set a fallback value for array to be an empty array.
+const myFunction = (string = "") => {
+}
+
+// & bubble sort
+// sorting algorithm which starts at the beginning of the array and 'bubbles up' unsorted values towards the end, iterating through the array until it is completely sorted.
+
+// & selection sort
+//  selection sort  works by finding the smallest value in the array, then swapping it with the first value in the array. Then, it finds the next smallest value in the array, and swaps it with the second value in the array. It continues iterating through the array until it is completely sorted.
+
+// & Insertion sort
+// Insertion sort. This algorithm works by building up a sorted array at the beginning of the list. It begins the sorted array with the first element. Then it inspects the next element and swaps it backward into the sorted array until it is in a sorted position, and so on.
+// the default behavior of .sort() is to convert the numbers values to strings, and sort them alphabetically. And 10 comes before 2 alphabetically.
+
+/* The callback to .sort() should return a number. That number determines how to sort the elements a and b:
+
+If the number is negative, sort a before b.
+If the number is positive, sort b before a.
+If the number is zero, do not change the order of a and b.
+Keeping in mind that you want the numbers to be sorted in ascending order (smallest to largest), return a single subtraction calculation using a and b that will correctly sort the numbers with the above logic.
+*/
+const sortedValues = inputValues.sort((a, b) => {
+  return a - b;
+});
