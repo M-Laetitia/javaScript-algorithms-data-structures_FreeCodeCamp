@@ -18,9 +18,11 @@ const calculate =() => {
 
     const mean = getMean(numbers);
     const median = getMedian(numbers);
+    const mode = getMode(numbers);
 
     document.querySelector('#mean').textContent = mean;
     document.querySelector("#median").textContent = median;
+    document.querySelector("#mode").textContent = mode;
 }
 
 // ^ Mean
@@ -35,7 +37,6 @@ const getMean = (array) => {
 }
 
 // ^ Median
-
 // sort array  from least to greatest
 const getMedian = (array) => {
     const sorted = array.sort((a, b) => a - b);
@@ -45,3 +46,44 @@ const getMedian = (array) => {
         return sorted[Math.floor(sorted.length / 2)]
     }
 }
+
+// ^ Mode
+
+// before refactor
+/*
+const getMode = (array) => {
+    const counts = {};
+    array.forEach(el => {
+        if (counts[el]) {
+            counts[el] += 1;
+        } else {
+            counts[el] = 1;
+        }
+    })
+});
+*/
+
+// after refactor
+const getMode = (array) => {
+    const counts = {};
+    
+    array.forEach(el => counts[el] = (counts[el] || 0) + 1)
+  
+    if(new Set(Object.values(counts)).size=== 1 ){
+      return null
+    }
+    // find the value that occurs with the highest frequency
+    // sort the values properly.  use the counts object to compare the values of each key. 
+    const highest = Object.keys(counts).sort((a,b)=> {
+        return counts[b] - counts[a];
+      })[0]; // access the first element in the array
+
+      // handle both of cases : when multiple numbers in a series occur at the same highest frequency or when there is only one result
+      const mode = Object.keys(counts).filter((el)=>{
+        return counts[el] === counts[highest]
+      });
+
+      // mode is an array,  return it as a string with the .join() method.
+      return mode.join(", ")
+  }
+
