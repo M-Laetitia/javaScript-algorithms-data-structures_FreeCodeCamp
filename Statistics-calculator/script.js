@@ -15,7 +15,12 @@ const calculate =() => {
     // const filtered = numbers.filter(el => !isNaN(el));
 
     const numbers = array.map(el => Number(el)).filter(el => !isNaN(el));
-    const mean = getMean(numbers) 
+
+    const mean = getMean(numbers);
+    const median = getMedian(numbers);
+
+    document.querySelector('#mean').textContent = mean;
+    document.querySelector("#median").textContent = median;
 }
 
 // ^ Mean
@@ -26,6 +31,17 @@ const getMean = (array) => {
         mean = sum / array.length
         return mean;
     }
-
     // const getMean = (array) => array.reduce((acc, el) => acc + el, 0)/ array.length;
+}
+
+// ^ Median
+
+// sort array  from least to greatest
+const getMedian = (array) => {
+    const sorted = array.sort((a, b) => a - b);
+    if(sorted.length % 2 === 0) {
+        return getMean([sorted[sorted.length / 2], sorted[(sorted.length / 2) - 1]]);
+    } else {
+        return sorted[Math.floor(sorted.length / 2)]
+    }
 }
