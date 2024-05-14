@@ -19,10 +19,12 @@ const calculate =() => {
     const mean = getMean(numbers);
     const median = getMedian(numbers);
     const mode = getMode(numbers);
+    const range = getRange(numbers);
 
     document.querySelector('#mean').textContent = mean;
     document.querySelector("#median").textContent = median;
     document.querySelector("#mode").textContent = mode;
+    document.querySelector("#range").textContent = range;
 }
 
 // ^ Mean
@@ -85,5 +87,11 @@ const getMode = (array) => {
 
       // mode is an array,  return it as a string with the .join() method.
       return mode.join(", ")
-  }
+}
+
+// ^ Range
+const getRange =(array)=> {
+    // using the the spread operator
+    return Math.max(...array) - Math.min(...array)
+}
 
