@@ -28,4 +28,13 @@ const updateUI = (array = []) => {
     }) 
 }
 
+const bubbleSort = (array) => {
+    for (let i = 0; i < array.length ; i++) {
+        // use a nested for loop. This loop should iterate through every element in the array except the last one.
+        for(let j = 0; j < array.length - 1; j++) {
+            console.log(array, array[j], array[j + 1]);
+        }
+    }
+}
+
 sortButton.addEventListener("click", sortInputArray);
