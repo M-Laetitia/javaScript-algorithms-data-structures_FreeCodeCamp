@@ -1,3 +1,30 @@
+const sum = nums => nums.reduce((acc, el) => acc + el, 0);
+
+const isEven =(num)=>{
+  if(num % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const average =(nums)=> sum(nums) / nums.length;
+
+const median = nums => {
+  const sorted = nums.slice().sort((a, b) => a - b);
+  const length = sorted.length;
+  const middle = length / 2 - 1 ;
+  // Using ternary syntax, check if length is even - Use Math.ceil() to round the middle value up.
+  return isEven(length) ? average([sorted[middle],sorted[middle + 1]])  : sorted[Math.ceil(middle)];
+}
+
+const spreadsheetFunctions = {
+  sum,
+  average,
+  median
+}
+
+
 // ^ Generate a range of numbers.
 // use Array() constructor and implicitly return an empty array.
 // the  will need to be the size of the range. calculate this by finding the difference between end and start, and adding 1 to the result.
