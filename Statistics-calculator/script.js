@@ -95,3 +95,43 @@ const getRange =(array)=> {
     return Math.max(...array) - Math.min(...array)
 }
 
+// ^ Variance
+
+// before refactor
+const getVariancefirst = (array) => {
+    const mean = getMean(array);
+    // calculate how far each element is from the mean
+    const differences = array.map((el)=> {
+      return el - mean
+    })
+    // square each of the differences
+    const squaredDifferences  = differences.map((el)=>{
+        return el ** 2;
+    })
+    /*
+    const squaredDifferences = differences.map(el => el ** 2);
+    */
+
+    // take the sum of the squared differences 
+    const sumSquaredDifferences  = squaredDifferences.reduce((acc,el)=>{
+        return acc + el;
+    }, 0) // set the initial value to 0
+
+    /*
+    const sumSquaredDifferences = squaredDifferences.reduce(
+    (acc, el) => acc + el, 0
+    );*/
+}
+
+// after refactor
+const getVariance = (array) => {
+    const mean = getMean(array);
+    const variance = array.reduce((acc, el) => {
+      const difference = el - mean;
+      const squared = difference ** 2;
+      return acc + squared;
+    } , 0) / array.length;
+    return variance;
+  }
+
+// ^
