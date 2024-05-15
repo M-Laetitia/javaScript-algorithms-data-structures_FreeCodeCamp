@@ -20,11 +20,15 @@ const calculate =() => {
     const median = getMedian(numbers);
     const mode = getMode(numbers);
     const range = getRange(numbers);
+    const variance = getVariance(numbers);
+    const standardDeviation = getStandardDeviation(numbers);
 
     document.querySelector('#mean').textContent = mean;
     document.querySelector("#median").textContent = median;
     document.querySelector("#mode").textContent = mode;
     document.querySelector("#range").textContent = range;
+    document.querySelector("#variance").textContent = variance;
+    document.querySelector("#standardDeviation").textContent = standardDeviation;
 }
 
 // ^ Mean
@@ -41,7 +45,7 @@ const getMean = (array) => {
 // ^ Median
 // sort array  from least to greatest
 const getMedian = (array) => {
-    const sorted = array.sort((a, b) => a - b);
+    const sorted = array.sort((a, b) => a - b); 
     if(sorted.length % 2 === 0) {
         return getMean([sorted[sorted.length / 2], sorted[(sorted.length / 2) - 1]]);
     } else {
@@ -134,4 +138,14 @@ const getVariance = (array) => {
     return variance;
   }
 
-// ^
+// ^ Standard deviation 
+
+const getStandardDeviation =(array)=>{
+    const variance = getVariance(array);
+    // calculate a root exponent
+    // const standardDeviation  = Math.pow(variance, 1/2)
+
+    // The Math object has a .sqrt() method specifically for finding the square root of a number.
+    const standardDeviation = Math.sqrt(variance);
+    return standardDeviation ;
+}
