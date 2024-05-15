@@ -44,13 +44,26 @@ const getMean = (array) => {
 
 // ^ Median
 // sort array  from least to greatest
-const getMedian = (array) => {
-    const sorted = array.sort((a, b) => a - b); 
+// before refactor
+const getMedianfirst = (array) => {
+    // The .sort() method mutates the array it's called on. It is generally bad practice to mutate a function parameter, which array is.
+    // To fix this, add an empty .slice() call before your .sort() method. The empty .slice() call will make a shallow copy of the array, which you are free to mutate.
+    const sorted = array.slice().sort((a, b) => a - b); 
     if(sorted.length % 2 === 0) {
         return getMean([sorted[sorted.length / 2], sorted[(sorted.length / 2) - 1]]);
     } else {
         return sorted[Math.floor(sorted.length / 2)]
     }
+}
+
+// After refactor
+const getMedian = (array) => {
+    const sorted = array.slice().sort((a, b) => a - b);
+    const median =
+      array.length % 2 === 0
+        ? getMean([sorted[array.length / 2], sorted[array.length / 2 - 1]])
+        : sorted[Math.floor(array.length / 2)];
+    return median;
 }
 
 // ^ Mode
@@ -136,7 +149,7 @@ const getVariance = (array) => {
       return acc + squared;
     } , 0) / array.length;
     return variance;
-  }
+}
 
 // ^ Standard deviation 
 
