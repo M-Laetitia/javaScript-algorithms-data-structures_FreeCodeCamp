@@ -1,5 +1,3 @@
-
-
 // ^ Generate a range of numbers.
 // use Array() constructor and implicitly return an empty array.
 // the  will need to be the size of the range. calculate this by finding the difference between end and start, and adding 1 to the result.
@@ -21,4 +19,6 @@ window.onload = () => {
       label.textContent = name;
       container.appendChild(label);
     }
+    const letters = charRange("A", "J");
+    letters.forEach(createLabel)
 }
