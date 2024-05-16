@@ -48,8 +48,17 @@ const spreadsheetFunctions = {
   average,
   median,
   even: nums => nums.filter(isEven),
+  someeven: nums => nums.some(isEven),
+  everyeven: nums => nums.every(isEven),
   firsttwo: nums => nums.slice(0, 2),
   lasttwo: nums => nums.slice(-2),
+  has2: nums => nums.includes(2),
+  increment: nums => nums.map(num => num + 1),
+  // random: nums => Math.floor(Math.random() * (Math.max(...nums.slice(0, 2)) - Math.min(...nums.slice(0, 2))) + Math.min(...nums.slice(0, 2))),
+  random: ([x, y]) => Math.floor(Math.random() * y + x),
+  range: nums => range(nums[0], nums[1]),
+  nodupes: nums => [...new Set(nums)],
+  '': arg => arg,
 }
 
 // applying the function parsing logic to a string.
