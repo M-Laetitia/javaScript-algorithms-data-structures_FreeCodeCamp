@@ -58,6 +58,7 @@ const spreadsheetFunctions = {
   random: ([x, y]) => Math.floor(Math.random() * y + x),
   range: nums => range(nums[0], nums[1]),
   nodupes: nums => [...new Set(nums)],
+  // handle potential edge cases, with an empty string property
   '': arg => arg,
 }
 
