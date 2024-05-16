@@ -147,6 +147,6 @@ const update = event => {
 
   // check if the value does not include the id of the element and also checks if the first character of value is =.
   if (!value.includes(element.id) && value.charAt(0) === "=") {
-
+    element.value = evalFormula(value.slice(1), Array.from(document.getElementById("container").children));
   }
 }
