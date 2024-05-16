@@ -36,3 +36,12 @@ const phoneNumber = '\\(?[0-9]{3}\\)?[-\\s]?[0-9]{3}[-\\s]?[0-9]{4}$';
 const phoneRegex = `${countryCode}${phoneNumber}`
 
 
+const isValidNumber =()=>{
+    console.log("test");
+    if(userInput.value.match(newRegex)){
+      console.log('okookok')
+      results.innerHTML += `Valid US number: ${userInput.value} <br>`
+    } else {
+      results.innerHTML += `Invalid US number: ${userInput.value} <br>`
+    }
+  }
