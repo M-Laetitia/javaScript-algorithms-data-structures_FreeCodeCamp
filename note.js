@@ -1,6 +1,7 @@
 // & template literals
 // & innerHTML / innerText / textContent /  string interpolation / 
 // & getElementsByClassName()
+// & parseFloat() / hasOwnProperty()
 
 
 
@@ -392,7 +393,7 @@ const helpRegex = /hello/i; //the i flag can be used to make the expression igno
 
 // ^ Number sorter ---------------------
 // ^ -----------------------------------
-// ^ Sorting algorithm
+// ^ fundamental sorting algorithms like bubble sort, selection sort, and insertion sort
 
 // &  fallback value
 //  if writing algorithms that won't immediately have a return value, set a fallback value for array to be an empty array.
@@ -419,3 +420,152 @@ Keeping in mind that you want the numbers to be sorted in ascending order (small
 const sortedValues = inputValues.sort((a, b) => {
   return a - b;
 });
+
+// ^ Statistics calculator -------------
+// ^ -----------------------------------
+// ^  handling user input, DOM manipulation, and method chaining, performing statistical calculations like mean, median, mode, variance, and standard deviation, array manipulation methods, such as map(), reduce(), and filter().
+
+// & filter()
+//  The .filter() method will allow you to filter elements out of an array, creating a new array in the process.
+
+// & reduce()
+// The .reduce() method takes an array and applies a callback function to condense the array into a single value.
+// .reduce() takes a callback. This callback, however, takes at least two parameters. The first is the accumulator, and the second is the current element in the array. The return value for the callback becomes the value of the accumulator on the next iteration.
+
+array.reduce((acc, el) => {
+
+});
+
+// set an initial value.
+array.reduce((acc, el) => acc + el.toLowerCase(), "");
+
+// & return false (html)
+//  Normally, when a form is submitted, the event triggers a page refresh. To resolve this, add return false; after your calculate(); call in the onsubmit attribute.
+<form onsubmit="calculate() return false;"></form>
+
+// & modulus operator %
+// modulus operator %. The modulus operator returns the remainder of the division of two numbers.
+
+// check if array length is even
+arr.length % 2 === 0;
+
+// check if array length is odd
+arr.length % 2 === 1;
+
+const isEven = testArr2.length % 2 === 0; // return true or false
+
+//find the middle number of an array with an odd number of elements:
+arr[Math.floor(arr.length / 2)];
+
+const numbers = [1, 2, 3, 4, 5];
+const middleNumber = numbers[Math.floor(numbers.length / 2)];
+console.log(middleNumber); // 3
+
+
+// find the median of an even list of numbers, you need to find the two middle numbers and calculate the mean of those numbers.
+// first middle number
+arr[arr.length / 2];
+// second middle number
+arr[(arr.length / 2) - 1];
+
+const numbers = [1, 2, 3, 4];
+const firstMiddleNumber = numbers[numbers.length / 2];
+const secondMiddleNumber = numbers[(numbers.length / 2) - 1];
+// result is 2.5
+getMean([firstMiddleNumber, secondMiddleNumber]);
+
+const evenListMedian = getMean([testArr2[testArr2.length / 2], testArr2[(testArr2.length / 2) - 1]]);
+
+// & Mode / Occurence
+// To calculate the occurrence you can use the following approach
+const numbersArr = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4];
+const counts = {};
+numbersArr.forEach((el) => {
+  if (counts[el]) {
+    counts[el] += 1;
+  } else {
+    counts[el] = 1;
+  }
+});
+
+// & Set
+// . A Set is a data structure that only allows unique values. If you pass an array into the Set constructor, it will remove any duplicate values.
+
+// & Object.keys()
+
+// & Math.min - Math.max
+
+// & ** operator
+// To square a value, you can use the ** operator. For example, 3 ** 2 would return 9.
+
+// & Math.pow()
+// To calculate a root exponent, such as  x−−√n, you can use an inverted exponent  x1/n. JavaScript has a built-in Math.pow() function that can be used to calculate exponents.
+
+Math.pow(base, exponent);
+
+const base = 4;
+const exponent = 0.5;
+// returns 2
+Math.pow(base, exponent);
+
+// & Math.sqrt()
+// The Math object has a .sqrt() method specifically for finding the square root of a number.
+
+// ^ Spreadsheet -----------------------
+// ^ -----------------------------------
+// ^  Functional Programming. parsing and evaluating mathematical expressions, implementing spreadsheet functions, handling cell references, and creating interactive web interfaces.dynamically update the page based on user input.
+// ^ map() method, find() method, parseInt(), the includes() method.
+
+// & window.onload
+// & Array() / .fill()
+//  The Array() constructor has a .fill() method which can be used to fill an array with a value. You can use this to fill your array with the start value.
+
+//& .charCodeAt(), String.fromCharCode()
+//& Math.ceil() 
+
+// & Shorthand property name syntax
+// When using the shorthand property name syntax, the name of the variable becomes the property key and its value the property value.
+const userId = 1;
+const firstName = "John";
+const loggedIn = true;
+
+const user = {
+  userId,
+  firstName,
+  loggedIn,
+};
+
+console.log(user); // { userId: 1, firstName: 'John', loggedIn: true }
+
+// & Currying / closure
+// The concept of returning a function within a function is called currying. This approach allows you to create a variable that holds a function to be called later, but with a reference to the parameters of the outer function call.
+
+const innerOne = elemValue(1);
+const final = innerOne("A");
+
+// innerOne would be your inner function, with num set to 1, and final would have the value of the cell with the id of A1. This is possible because functions have access to all variables declared at their creation. This is called closure.
+
+// curry is a function which takes a soup parameter and returns a function which takes a veggies parameter.
+const curry = soup => veggies => {};
+
+const addCharacters = character1 => character2 => num => charRange(character1, character2);
+
+// A function reference is a function name without the parentheses. 
+const myFunc = (val) => `value: ${val}`;
+const array = [1, 2, 3];
+const newArray = array.map(myFunc);
+
+// JavaScript allows you to immediately invoke returned functions:
+myFunc(1)("hi");
+
+// & .some()
+// Arrays have a .some() method. Like the .filter() method, .some() accepts a callback function which should take an element of the array as the argument. The .some() method will return true if the callback function returns true for at least one element in the array.
+
+const arr = ["A", "b", "C"];
+arr.some(letter => letter === letter.toUpperCase());
+
+// & .every()
+// Arrays have an .every() method. Like the .some() method, .every() accepts a callback function which should take an element of the array as the argument. The .every() method will return true if the callback function returns true for all elements in the array.
+
+const arr = ["A", "b", "C"];
+arr.every(letter => letter === letter.toUpperCase());
