@@ -38,6 +38,38 @@ const range = (start, end) => Array(end - start + 1).fill(start).map((element, i
 // range() will return an array of numbers, convert back into characters. Chain the .map() method to the range() call.
 const charRange = (start, end) => range(start.charCodeAt(0), end.charCodeAt(0)).map(code => String.fromCharCode(code));
 
+
+const evalFormula = (x, cells) => {
+  // return the value of that input element.
+  const idToText = id => cells.find(cell => cell.id === id).value ;
+  // regular expression that matches A through J, Use a capture group with a character class.
+  //  new capture group should match one or two digits – the first digit should be 1 through 9, and the second digit should be 0 through 9. The second digit should be optional.
+  // Ranges are separated by a colon. 
+  // global and case-insensitive.with gi
+  const rangeRegex = /([A-J])([1-9][0-9]?):([A-J])([1-9][0-9]?)/gi;
+
+  // parse num1 and num2 into integers
+  const rangeFromString =(num1, num2)=> range(parseInt(num1), parseInt(num2));
+
+  // before refactor
+  // const elemValue = num => {
+  //   const inner = character => {
+  //     return idToText(character + num);
+  //   }
+  //   return inner;
+  // }
+
+  // after refactor
+  const elemValue = num => character => idToText(character + num)
+  // the addCharacters function ultimately returns a range of characters. You want it to return an array of cell ids. Chain the .map() method to your charRange() 
+  const addCharacters = character1 => character2 => num => charRange(character1, character2).map(elemValue(num));
+  // rangeRegex has four capture groups: the first letter, the first numbers, the second letter, and the second numbers.
+  // JavaScript, it is common convention to prefix an unused parameter with an underscore _. 
+  const rangeExpanded = x.replace(rangeRegex, (_match, char1, num1, char2, num2) => rangeFromString(num1, num2).map(addCharacters(char1)(char2)));
+  const cellRegex = /[A-J][1-9][0-9]?/gi;
+  const cellExpanded = rangeExpanded.replace(cellRegex, match => idToText(match.toUpperCase()));
+}
+
 window.onload = () => {
   const container = document.getElementById("container");
   const createLabel = (name) => {
