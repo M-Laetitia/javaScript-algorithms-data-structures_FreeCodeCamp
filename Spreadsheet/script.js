@@ -6,6 +6,8 @@ const infixToFunction = {
 
 }
 
+
+
 const sum = nums => nums.reduce((acc, el) => acc + el, 0);
 
 const isEven =(num)=>{
@@ -15,6 +17,10 @@ const isEven =(num)=>{
     return false;
   }
 }
+// callback needs four parameters. match, arg1, operator, and arg2.
+// callback function implicitly return the operator property of your infixToFunction object. 
+// arg1 and arg2 are strings, not numbers. Wrap each of the infixToFunction[operator] arguments in a parseFloat() call.
+const infixEval = (str, regex) => str.replace(regex, (_match, arg1, operator, arg2) => infixToFunction[operator](parseFloat(arg1), parseFloat(arg2)));
 
 const average =(nums)=> sum(nums) / nums.length;
 
