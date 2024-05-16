@@ -105,6 +105,9 @@ const evalFormula = (x, cells) => {
   const rangeExpanded = x.replace(rangeRegex, (_match, char1, num1, char2, num2) => rangeFromString(num1, num2).map(addCharacters(char1)(char2)));
   const cellRegex = /[A-J][1-9][0-9]?/gi;
   const cellExpanded = rangeExpanded.replace(cellRegex, match => idToText(match.toUpperCase()));
+  //  apply the function parser to the evalFormula logic.
+  const functionExpanded = applyFunction(cellExpanded);
+  return functionExpanded === x ? functionExpanded : evalFormula(functionExpanded, cells);
 }
 
 window.onload = () => {
