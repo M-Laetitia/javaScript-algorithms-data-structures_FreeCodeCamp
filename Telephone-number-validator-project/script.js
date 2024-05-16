@@ -4,14 +4,19 @@ const clearBtn = document.getElementById('clear-btn');
 const results = document.getElementById('results-div');
 
 checkBtn.addEventListener('click', ()=>{
-    if(!userInput.value) {
-      alert('Please provide a phone number');
-    }
     isValidNumber();
+    userInput.value = '';
 })
-  
-  clearBtn.addEventListener('click',()=>{
-    results.innerHTML= "";
+
+userInput.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter') {
+        isValidNumber();
+        userInput.value = '';
+    }
+})
+
+clearBtn.addEventListener('click',()=>{
+  results.innerHTML= "";
 })
 
 
@@ -27,15 +32,18 @@ const countryCode = '^(1\\s?)?';
 const areaCode = '(\\([0-9]{3}\\)|[0-9]{3})';
 const spaces = '[\\s\\-]?';
 const phoneNumber = '[0-9]{3}[\\s\\-]?[0-9]{4}$';
-
 const phoneRegex = `${countryCode}${areaCode}${spaces}${phoneNumber}`
 
 
 const isValidNumber =()=>{
-    console.log("test");
-    if(userInput.value.match(newRegex)){
+    if(!userInput.value) { // or (input === '')
+        alert('Please provide a phone number');
+        return;
+    }
+  
+    if(userInput.value.match(phoneRegex)){
       results.innerHTML += `Valid US number: ${userInput.value} <br>`
     } else {
       results.innerHTML += `Invalid US number: ${userInput.value} <br>`
     }
-  }
+}
