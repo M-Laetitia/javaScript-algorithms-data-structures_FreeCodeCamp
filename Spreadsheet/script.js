@@ -22,6 +22,17 @@ const isEven =(num)=>{
 // arg1 and arg2 are strings, not numbers. Wrap each of the infixToFunction[operator] arguments in a parseFloat() call.
 const infixEval = (str, regex) => str.replace(regex, (_match, arg1, operator, arg2) => infixToFunction[operator](parseFloat(arg1), parseFloat(arg2)));
 
+
+const highPrecedence = str => {
+  // Regular expression that matches a number (including decimal numbers) followed by a * or / operator followed by another number.Each number, and the operator, should be in separate capture groups.
+  const regex = /([0-9.]+)([*\/])([0-9.]+)/;
+  const str2 = infixEval(str, regex);
+
+  // infixEval function will only evaluate the first multiplication or division operation, because regex isn't global. This means it needs a recursive approach to evaluate the entire string.
+  return str2 === str ? str :  highPrecedence(str2);
+};
+
+
 const average =(nums)=> sum(nums) / nums.length;
 
 const median = nums => {
