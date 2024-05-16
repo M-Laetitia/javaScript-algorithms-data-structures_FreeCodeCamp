@@ -49,6 +49,18 @@ const spreadsheetFunctions = {
   median
 }
 
+// applying the function parsing logic to a string.
+const applyFunction = str => {
+  const noHigh = highPrecedence(str);
+  // evaluatethe addition and subtraction operators.
+  const infix = /([\d.]+)([-+])([\d.]+)/;
+  const str2 = infixEval(noHigh, infix);
+  // check for function calls like sum(1, 4).
+  const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;
+  const toNumberList =(args)=> args.split(",").map(parseFloat);
+  const apply = (fn, args) => spreadsheetFunctions[fn.toLowerCase()](toNumberList(args));
+  return str2.replace(functionCall, (match, fn, args) => spreadsheetFunctions.hasOwnProperty(fn.toLowerCase())? apply(fn,args) : match);
+}
 
 // ^ Generate a range of numbers.
 // use Array() constructor and implicitly return an empty array.
