@@ -24,22 +24,16 @@ checkBtn.addEventListener('click', ()=>{
 */
 const countryCode = '^(1\\s?)?';
 
-/*
-\\(? : Indicates the optional opening parenthesis. Double backslash (\\) is used to escape the opening parenthesis character (().
-[0-9]{3} : Matches three digits.
-\\)? : Indicates the optional closing parenthesis.
-[-\\s]? : Indicates the optional hyphen or space.
-[0-9]{4} : Matches four digits.
-$ : Anchor indicating the match must end at the end of the string. This ensures the match must exactly match the specified pattern.
-*/
-const phoneNumber = '\\(?[0-9]{3}\\)?[-\\s]?[0-9]{3}[-\\s]?[0-9]{4}$';
-const phoneRegex = `${countryCode}${phoneNumber}`
+const areaCode = '(\\([0-9]{3}\\)|[0-9]{3})';
+const spaces = '[\\s\\-]?';
+const phoneNumber = '[0-9]{3}[\\s\\-]?[0-9]{4}$';
+
+const phoneRegex = `${countryCode}${areaCode}${spaces}${phoneNumber}`
 
 
 const isValidNumber =()=>{
     console.log("test");
     if(userInput.value.match(newRegex)){
-      console.log('okookok')
       results.innerHTML += `Valid US number: ${userInput.value} <br>`
     } else {
       results.innerHTML += `Invalid US number: ${userInput.value} <br>`
