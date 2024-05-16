@@ -29,8 +29,24 @@ clearBtn.addEventListener('click',()=>{
 */
 const countryCode = '^(1\\s?)?';
 
+/*
+\\(: Matches an opening parenthesis. The backslash is an escape character to match the literal parenthesis.
+[0-9]{3}: Matches exactly three digits (0-9).
+|: Alternation operator, which means "or".
+*/
 const areaCode = '(\\([0-9]{3}\\)|[0-9]{3})';
+
+/*
+[\\s\\-]: Character class that matches either a space (\\s) or a hyphen (\\-).
+-?: Quantifier that makes the preceding character class optional, meaning it can appear zero or one time.
+*/
 const spaces = '[\\s\\-]?';
+
+/*
+[0-9]{3}: Matches exactly three digits (0-9).
+[\\s\\-]?: Matches zero or one space (\\s) or hyphen (\\-).
+$: Anchors the match to the end of the string, ensuring that the pattern occurs at the end of the phone number.
+*/
 const phoneNumber = '[0-9]{3}[\\s\\-]?[0-9]{4}$';
 const phoneRegex = `${countryCode}${areaCode}${spaces}${phoneNumber}`
 
