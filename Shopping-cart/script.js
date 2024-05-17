@@ -139,6 +139,22 @@ class ShoppingCart {
         <p>${price}</p>
       </div>
       `;
-        
     }
 };
+
+// instantiate a new object
+const cart = new ShoppingCart();
+
+// get all of the Add to cart buttons  added to the DOM 
+const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
+        
+//  iterate through the buttons in your addToCartBtns variable. However, .getElementsByClassName() returns a Collection, which does not have a forEach method.
+// Use the spread operator on the addToCartBtns variable to convert it into an array.
+[...addToCartBtns].forEach(
+  btn => {
+    btn.addEventListener('click', (event)=>{
+      // call the .addItem() method of   cart object, and pass in the event.target.id.  the id here will be a string, so convert it to a number.
+      cart.addItem(Number(event.target.id), products)
+    })
+  }
+);
