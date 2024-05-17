@@ -18,5 +18,8 @@ const gravity = 0.5;
 let isCheckpointCollisionDetectionActive = true;
 
 
-
 // function  to make sure that the size of the elements in the game are responsive and adapt to different screen sizes.
+const proportionalSize = (size) => {
+    return innerHeight < 500 ? Math.ceil((size/500) * innerHeight) : size
+};
+
