@@ -1,7 +1,8 @@
 // & template literals
 // & innerHTML / innerText / textContent /  string interpolation / 
-// & getElementsByClassName()
+// & getElementsByClassName() > returns a Collection
 // & parseFloat() / hasOwnProperty()
+// & showModal() / confirm()
 
 
 
@@ -569,3 +570,54 @@ arr.some(letter => letter === letter.toUpperCase());
 
 const arr = ["A", "b", "C"];
 arr.every(letter => letter === letter.toUpperCase());
+
+// ^ Shopping Cart ---------------------
+// ^ -----------------------------------
+// ^  OOP, or Object Oriented Programming : objects, classes, class instances and implement methods for data manipulation.
+// ^ the ternary operator, the spread operator, the this keyword.
+
+// & Class
+// In JavaScript, a class is like a blueprint for creating objects. It allows you to define a set of properties and methods, and instantiate (or create) new objects with those properties and methods. The class keyword is used to declare a class. 
+class Computer {};
+
+// & constructor method
+// Classes have a special constructor method, which is called when a new instance of the class is created. The constructor method is a great place to initialize properties of the class.
+class Computer {
+  constructor() {
+  }
+}
+
+// & this
+// The this keyword in JavaScript is used to refer to the current object. Depending on where this is used, what it references changes. In the case of a class, it refers to the instance of the object being constructed. You can use the this keyword to set the properties of the object being instantiated. 
+class Computer {
+  constructor() {
+    this.ram = 16;
+  }
+}
+
+// & method
+// Create an empty addItem method, which takes two parameters: id and products.
+class Computer {
+  constructor() {
+    this.ram = 16;
+  }
+
+  addRam(amount) {
+    this.ram += amount;
+  }
+}
+
+// & instantiate 
+const myComputer = new Computer();
+
+// & bind()
+// do this by passing cart.clearCart.bind(cart) as the callback.
+clearCartBtn.addEventListener('click', cart.clearCart.bind(cart));
+
+// & .toFixed()
+// the way computers store and work with numbers, calculations involving decimal numbers can result in some strange behavior. For example, 0.1 + 0.2 is not equal to 0.3. This is because computers store decimal numbers as binary fractions, and some binary fractions cannot be represented exactly as decimal fractions.
+//need to clean up the number result from your calculation with the .toFixed() method.
+// .toFixed() method the number 2 as an argument. This will round the number to two decimal places and return a string.
+
+// & confirm()
+// Browsers have a built-in confirm() function which displays a confirmation prompt to the user. confirm() accepts a string, which is the message displayed to the user. It returns true if the user confirms, and false if the user cancels.
