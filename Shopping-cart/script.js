@@ -140,6 +140,11 @@ class ShoppingCart {
       </div>
       `;
     }
+
+    // Add a getCounts method to the ShoppingCart class.
+    getCounts(){
+      return this.items.length;
+    }
 };
 
 // instantiate a new object
