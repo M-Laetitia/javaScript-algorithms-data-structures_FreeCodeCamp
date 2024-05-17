@@ -145,6 +145,14 @@ class ShoppingCart {
     getCounts(){
       return this.items.length;
     }
+
+    // Create a calculateTotal method 
+    // declare a subTotal variable and use the reduce method on the items array to calculate the sum of the price property of each item in the array. Use total and item as the parameters for your callback. 
+    calculateTotal() {
+      const subTotal =  this.items.reduce((total, item) => total + item.price, 0); // Set the  initial value in the reduce method.
+      return subTotal;
+    }
+    
 };
 
 // instantiate a new object
@@ -160,6 +168,8 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
     btn.addEventListener('click', (event)=>{
       // call the .addItem() method of   cart object, and pass in the event.target.id.  the id here will be a string, so convert it to a number.
       cart.addItem(Number(event.target.id), products)
+      // update the total number of items on the webpage
+      totalNumberOfItems.textContent = cart.getCounts();
     })
   }
 );
