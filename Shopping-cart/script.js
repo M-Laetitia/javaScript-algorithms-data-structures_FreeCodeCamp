@@ -158,3 +158,13 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
     })
   }
 );
+
+// make cart visible
+cartBtn.addEventListener("click", () => {
+  // inverting the value of isCartShowing
+  isCartShowing = !isCartShowing
+  // assign the textContent of the showHideCartSpan variable the result of a ternary expression which checks if isCartShowing is true. If it is, set the textContent to "Hide", otherwise set it to "Show".
+  showHideCartSpan.textContent = isCartShowing ? 'Hide' :  'Show';
+  // update the display property of the style object of the cartContainer variable to another ternary which checks if isCartShowing is true. If it is, set the display property to "block", otherwise set it to "none".
+  cartContainer.style.display = isCartShowing ?  "block" : "none";
+});
