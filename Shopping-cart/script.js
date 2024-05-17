@@ -150,7 +150,11 @@ class ShoppingCart {
   // declare a subTotal variable and use the reduce method on the items array to calculate the sum of the price property of each item in the array. Use total and item as the parameters for your callback. 
   calculateTotal() {
     const subTotal =  this.items.reduce((total, item) => total + item.price, 0); // Set the  initial value in the reduce method.
-    const tax = this.calculateTaxes(subTotal); // 
+    const tax = this.calculateTaxes(subTotal); 
+    this.total = subTotal + tax;
+    cartSubTotal.textContent = `$${subTotal.toFixed(2)}`;
+    cartTaxes.textContent = `$${tax.toFixed(2)}`;
+    cartTotal.textContent = `$${this.total.toFixed(2)}`;
   }
 
   calculateTaxes(amount) {
