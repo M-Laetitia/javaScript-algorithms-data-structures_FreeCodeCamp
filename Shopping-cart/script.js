@@ -102,3 +102,43 @@ products.forEach(
       `;
     }
 );
+
+class ShoppingCart {
+    constructor() {
+      this.items = [];
+      this.total = 0;
+      this.taxRate = 8.25;
+    }
+    addItem(id, products) {
+      const product = products.find((item) => item.id === id);
+      // Use const and destructuring to extract name and price variables from product.
+      const {name, price} = product;
+      // push the product into the cart's items array,  use the this keyword.
+      this.items.push(product);
+
+      const totalCountPerProduct = {};
+      this.items.forEach((dessert) => {
+          // update the totalCountPerProduct object. Using the id of the current dessert as your property
+          // use the || operator to set the value to 0 if it doesn't exist. 
+          totalCountPerProduct[dessert.id] = (totalCountPerProduct[dessert.id] || 0) + 1;
+      })
+
+      // get prepared to update the display with the new product the user added.
+      const currentProductCount = totalCountPerProduct[product.id];
+      const currentProductCountSpan = document.getElementById(`product-count-for-id${id}`);
+
+      // Checks if the current product is already in the cart. Use undefined for both the truthy and falsy expressions to avoid a syntax error.
+      currentProductCount > 1 
+      ? currentProductCountSpan.textContent = `${currentProductCount}x`
+      //  add new HTML to your productsContainer  - use the addition assignment operator and template literal syntax 
+      : productsContainer.innerHTML += `
+      <div id="dessert${id}" class="product">
+        <p>
+            <span class="product-count" id="product-count-for-id${id}"></span>${name}
+        </p>
+        <p>${price}</p>
+      </div>
+      `;
+        
+    }
+};
