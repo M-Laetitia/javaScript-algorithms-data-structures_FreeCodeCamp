@@ -216,3 +216,8 @@ cartBtn.addEventListener("click", () => {
   // update the display property of the style object of the cartContainer variable to another ternary which checks if isCartShowing is true. If it is, set the display property to "block", otherwise set it to "none".
   cartContainer.style.display = isCartShowing ?  "block" : "none";
 });
+
+/*click event listener to the clearCartBtn. For the callback, pass in cart.clearCart directly.However, doing so will not work, because the context of this will be the clearCartBtn element. You need to bind the clearCart method to the cart object.
+You can do this by passing cart.clearCart.bind(cart) as the callback.
+*/
+clearCartBtn.addEventListener('click', cart.clearCart.bind(cart));
