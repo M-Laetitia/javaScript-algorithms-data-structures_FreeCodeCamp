@@ -146,6 +146,27 @@ class ShoppingCart {
     return this.items.length;
   }
 
+  clearCart() {
+    if(!this.items.length) { // 0 is a falsy value, so use the ! operator instead to check if the array is empty.
+      alert('Your shopping cart is already empty');
+      return;
+    }
+    const isCartCleared = confirm(
+      "Are you sure you want to clear all items from your shopping cart?"
+    );
+
+    if(isCartCleared) {
+      this.items = [];
+      this.total = 0;
+      productsContainer.innerHTML = "";
+      totalNumberOfItems.textContent = 0;
+      cartSubTotal.textContent = 0;
+      cartTaxes.textContent = 0;
+      cartTotal.textContent = 0;
+    }
+
+  }
+
   // Create a calculateTotal method 
   // declare a subTotal variable and use the reduce method on the items array to calculate the sum of the price property of each item in the array. Use total and item as the parameters for your callback. 
   calculateTotal() {
@@ -155,6 +176,7 @@ class ShoppingCart {
     cartSubTotal.textContent = `$${subTotal.toFixed(2)}`;
     cartTaxes.textContent = `$${tax.toFixed(2)}`;
     cartTotal.textContent = `$${this.total.toFixed(2)}`;
+    return this.total
   }
 
   calculateTaxes(amount) {
@@ -180,6 +202,7 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
       cart.addItem(Number(event.target.id), products)
       // update the total number of items on the webpage
       totalNumberOfItems.textContent = cart.getCounts();
+      cart.calculateTotal()
     })
   }
 );
