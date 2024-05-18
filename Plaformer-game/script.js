@@ -77,6 +77,16 @@ class Player {
 // create a new instance of the Player object
 const player = new Player(); 
 
+// updating the player's position and continually drawing it on the canvas.
+const animate = () => {
+  // The requestAnimationFrame() web API, takes in a callback and update the animation on the screen. 
+  requestAnimationFrame(animate);
+  // As the player moves through the game clear the canvas before rendering the next frame of the animation.
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // update the player's position as it moves throughout the game.
+  player.update();
+}
+
 const startGame = () => {
   // display the canvas element and hide the startScreen container.
   canvas.style.display ="block";
