@@ -87,6 +87,17 @@ const animate = () => {
   player.update();
 }
 
+// manage the player's movement in the game:  monitor when the left and right arrow keys are pressed.
+const keys = {
+  rightKey: {
+    pressed: false
+  },
+  leftKey: {
+    pressed: false
+  }
+};
+
+
 const startGame = () => {
   // display the canvas element and hide the startScreen container.
   canvas.style.display ="block";
