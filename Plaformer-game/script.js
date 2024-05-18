@@ -72,8 +72,20 @@ class Player {
       this.position.x = canvas.width - 2 * this.width;
     }
   }
-
-
 }
+
+// create a new instance of the Player object
+const player = new Player(); 
+
+const startGame = () => {
+  // display the canvas element and hide the startScreen container.
+  canvas.style.display ="block";
+  startScreen.style.display = "none";
+  // draw the player  on the canvas.
+  player.draw();
+  
+}
+
+startBtn.addEventListener("click", startGame);
 
     
