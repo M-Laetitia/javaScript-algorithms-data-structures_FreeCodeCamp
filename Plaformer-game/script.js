@@ -39,6 +39,41 @@ class Player {
     this.width =  proportionalSize(40)
     this.height =  proportionalSize(40)
   }
+
+  draw() {
+    ctx.fillStyle = "#99c9ff" //  set the color for the player.
+    // create the player's shape by calling the fillRect() method on the ctx object  instantiated earlier.
+    ctx.fillRect(this.position.x , this.position.y , this.width , this.height);
+  }
+
+  // updating the player's position and velocity as it moves throughout the game.
+  update() {
+    this.draw() //  ensure that the player is continually drawn on the screen as the game updates.
+    this.position.x += this.velocity.x; // When the player moves to the right, adjust its velocity.
+    this.position.y += this.velocity.y; // When the player jumps, adjust its velocity.
+    //  stop the player from falling past the height of the canvas.
+    if( (this.position.y + this.velocity.y + this.height ) <= canvas.height ){
+      if(this.position.y  < 0) {
+        this.position.y = 0;
+        this.velocity.y = gravity;
+      }
+      this.velocity.y += gravity;
+    } else {
+      this.velocity.y = 0;
+    }
+    
+    // ensure that the player stays within the boundaries of the canvas screen and doesn't move too far off to the left.
+    if (this.position.x < this.width) {
+      this.position.x = this.width;
+    }
+
+    //  prevent the player to  accidentally goes off screen to the right.
+    if (this.position.x >= canvas.width - 2 * this.width) {
+      this.position.x = canvas.width - 2 * this.width;
+    }
+  }
+
+
 }
 
     
