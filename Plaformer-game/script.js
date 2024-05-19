@@ -34,6 +34,10 @@ class Platform {
     this.width = 200;
     this.height = proportionalSize(40) // make sure the height is proportional to the screen size.
   }
+  draw() {
+    ctx.fillStyle = "#acd157";
+    ctx.fillRect(this.position.x, this.position.y, this.width , this.height );
+  }
 }
 
 // characteristics for the main player of the game.
@@ -89,6 +93,8 @@ class Player {
 
 // create a new instance of the Player object
 const player = new Player(); 
+
+
 
 // updating the player's position and continually drawing it on the canvas.
 const animate = () => {
