@@ -136,6 +136,7 @@ const movePlayer = (key, xVelocity, isPressed) => {
       break;
     
   }
+
   
 }
 
@@ -149,4 +150,15 @@ const startGame = () => {
 }
 
 startBtn.addEventListener("click", startGame);
+
+// event listeners for calling the movePlayer function.
+// addEventListener to the global window object, for the arguments, pass in the keydown event and an arrow function that uses the destructuring assignment to get the key property from the event object in the event listener parameter.
+window.addEventListener("keydown", ({ key }) => {
+  movePlayer(key, 8, true);
+});
+
+window.addEventListener("keyup", ({ key }) => {
+  movePlayer(key, 0, false);
+});
+
 
