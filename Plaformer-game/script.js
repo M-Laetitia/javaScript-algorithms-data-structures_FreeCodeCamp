@@ -111,12 +111,19 @@ const platformPositions = [
   { x: 4700,  y: proportionalSize(150) },
 ];
 
+//  create a list of new platform instances using the Platform class. 
+const platforms = platformPositions.map(
+  //  pass in platform for the parameter and implicitly return the creation of a new Platform instance with the platform.x and platform.y values passed in as arguments.
+  platform => new Platform(platform.x, platform.y)
+);
+
 // updating the player's position and continually drawing it on the canvas.
 const animate = () => {
   // The requestAnimationFrame() web API, takes in a callback and update the animation on the screen. 
   requestAnimationFrame(animate);
   // As the player moves through the game clear the canvas before rendering the next frame of the animation.
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+ 
   // update the player's position as it moves throughout the game.
   player.update();
   // increasing or decreasing a player's velocity based on if they move to the left or right of the screen.
