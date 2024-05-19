@@ -145,7 +145,8 @@ const startGame = () => {
   canvas.style.display ="block";
   startScreen.style.display = "none";
   // draw the player  on the canvas.
-  player.draw();
+  // player.draw();
+  animate();
   
 }
 
