@@ -85,6 +85,15 @@ const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // update the player's position as it moves throughout the game.
   player.update();
+  // increasing or decreasing a player's velocity based on if they move to the left or right of the screen.
+  if (keys.rightKey.pressed && player.position.x < proportionalSize(400)) {
+    player.velocity.x = 5;
+  } else if (keys.leftKey.pressed && player.position.x > proportionalSize(100)){
+    player.velocity.x = -5;
+  } else {
+    player.velocity.x = 0;
+  }
+
 }
 
 // manage the player's movement in the game:  monitor when the left and right arrow keys are pressed.
@@ -98,6 +107,7 @@ const keys = {
 };
 
 
+
 const startGame = () => {
   // display the canvas element and hide the startScreen container.
   canvas.style.display ="block";
@@ -109,4 +119,3 @@ const startGame = () => {
 
 startBtn.addEventListener("click", startGame);
 
-    
