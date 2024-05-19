@@ -162,6 +162,10 @@ const animate = () => {
   platforms.forEach((platform)=>{
     platform.draw();
   })
+  // draw each of the checkpoints onto the canvas.
+  checkpoints.forEach((checkpoint)=>{
+    checkpoint.draw() ;
+  })
   // update the player's position as it moves throughout the game.
   player.update();
   // increasing or decreasing a player's velocity based on if they move to the left or right of the screen.
@@ -178,9 +182,16 @@ const animate = () => {
     platforms.forEach((platform) => {
       platform.position.x -= 5;
     });
+    checkpoints.forEach((checkpoint) => {
+      checkpoint.position.x -= 5;
+    });
   } else if (keys.leftKey.pressed && isCheckpointCollisionDetectionActive) {
     platforms.forEach((platform) => {
       platform.position.x += 5;
+    });
+
+    checkpoints.forEach((checkpoint) => {
+      checkpoint.position.x += 5;
     });
   }
 
