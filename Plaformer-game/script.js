@@ -123,7 +123,10 @@ const animate = () => {
   requestAnimationFrame(animate);
   // As the player moves through the game clear the canvas before rendering the next frame of the animation.
   ctx.clearRect(0, 0, canvas.width, canvas.height);
- 
+  // draw each of the platforms onto the canvas.
+  platforms.forEach((platform)=>{
+    platform.draw();
+  })
   // update the player's position as it moves throughout the game.
   player.update();
   // increasing or decreasing a player's velocity based on if they move to the left or right of the screen.
