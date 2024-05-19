@@ -563,6 +563,7 @@ myFunc(1)("hi");
 // Arrays have a .some() method. Like the .filter() method, .some() accepts a callback function which should take an element of the array as the argument. The .some() method will return true if the callback function returns true for at least one element in the array.
 
 const arr = ["A", "b", "C"];
+[1, 2, 3, 4].every((item) => item === 3)
 arr.some(letter => letter === letter.toUpperCase());
 
 // & .every()
@@ -621,3 +622,31 @@ clearCartBtn.addEventListener('click', cart.clearCart.bind(cart));
 
 // & confirm()
 // Browsers have a built-in confirm() function which displays a confirmation prompt to the user. confirm() accepts a string, which is the message displayed to the user. It returns true if the user confirms, and false if the user cancels.
+
+// ^ Platformer Game ---------------------
+// ^ -----------------------------------
+// ^ classes, objects, inheritance, and encapsulation.
+
+// & Canvas API
+// The Canvas API can be used to create graphics in games using JavaScript and the HTML canvas element. You will need to use the getContext method which will provide the context for where the graphics will be rendered.
+canvas.getContext("2d");
+canvas.width
+
+// & requestAnimationFrame()
+// The requestAnimationFrame() web API, takes in a callback and is used to update the animation on the screen. 
+
+// & clearRect() Web API 
+// As the player moves through the game, you will need to clear the canvas before rendering the next frame of the animation.You can use the clearRect() Web API to accomplish this. It takes in an x, y, width, and height arguments.
+
+// & Shorthand property name syntax
+// When working with objects where the property name and value are the same, you can use the shorthand property name syntax. This syntax allows you to omit the property value if it is the same as the property name.
+
+// using shorthand property name syntax
+obj = {
+  a, b, c
+}
+obj = {
+  a: a,
+  b: b,
+  c: c
+}
