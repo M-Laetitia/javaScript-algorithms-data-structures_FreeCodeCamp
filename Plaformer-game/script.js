@@ -23,6 +23,19 @@ const proportionalSize = (size) => {
     return innerHeight < 500 ? Math.ceil((size/500) * innerHeight) : size
 };
 
+// create the platforms and platform logic.
+class Platform {
+  // create a constructor that takes in the x and y coordinates.
+  constructor(x,y) {
+    // use the shorthand property syntax .
+    this.position = {
+      x,y,
+    };
+    this.width = 200;
+    this.height = proportionalSize(40) // make sure the height is proportional to the screen size.
+  }
+}
+
 // characteristics for the main player of the game.
 class Player {
   constructor() {
