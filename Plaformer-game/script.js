@@ -91,6 +91,31 @@ class Player {
   }
 }
 
+//  add the logic for the checkpoints. When a player collides with a checkpoint, the checkpoint screen should appear.
+class CheckPoint {
+  constructor(x, y, z) {
+    this.position = {
+      x,
+      y,
+    };
+    this.width = proportionalSize(40);
+    this.height = proportionalSize(70);
+    this.claimed = false;
+  };
+  draw(){
+    ctx.fillStyle = "#f1be32";
+    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
+  claim() {
+    this.width = 0;
+    this.height = 0;
+    this.position.y = Infinity; //  is a special numeric value representing infinity. Assigning Infinity to this.position.y ensures that the y position of the checkpoint is outside the typical range of canvas coordinates.
+    this.claimed = true;
+  }
+};
+
+
+
 // create a new instance of the Player object
 const player = new Player(); 
 
