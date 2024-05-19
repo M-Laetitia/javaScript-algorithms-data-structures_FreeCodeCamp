@@ -142,6 +142,16 @@ const platforms = platformPositions.map(
   platform => new Platform(platform.x, platform.y)
 );
 
+//
+const checkpointPositions = [
+  {x: 1170, y: proportionalSize(80), z: 1},
+  {x: 2900, y: proportionalSize(330), z: 2 },
+  {x: 4800, y: proportionalSize(80), z: 3}
+]
+
+// create a list of new checkpoint instances using the CheckPoint class.
+const checkpoints =  checkpointPositions.map((checkpoint)=> new CheckPoint(checkpoint.x, checkpoint.y, checkpoint.z ));
+
 // updating the player's position and continually drawing it on the canvas.
 const animate = () => {
   // The requestAnimationFrame() web API, takes in a callback and update the animation on the screen. 
