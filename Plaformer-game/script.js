@@ -148,6 +148,23 @@ const animate = () => {
       platform.position.x += 5;
     });
   }
+
+  // add collision detection logic to the game.
+  platforms.forEach((platform) => {
+    const collisionDetectionRules = [
+      player.position.y + player.height <= platform.position.y,
+      player.position.y + player.height + player.velocity.y >= platform.position.y,
+      player.position.x >= platform.position.x - player.width / 2,
+      player.position.x <= platform.position.x + platform.width - player.width / 3
+    ];
+
+    // checks if every rule in the collisionDetectionRules array is truthy.
+    if(collisionDetectionRules.every((rule) => rule)){
+      player.velocity.y = 0;
+      return;
+    }
+  });
+
 }
 
 // manage the player's movement in the game:  monitor when the left and right arrow keys are pressed.
