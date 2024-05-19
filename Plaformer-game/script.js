@@ -138,13 +138,16 @@ const animate = () => {
     player.velocity.x = 0;
   }
 
-  //  as the player moves to the right, makes the platform move with it.
+  // as the player moves to the right, makes the platform move with it.
   if (keys.rightKey.pressed && isCheckpointCollisionDetectionActive) {
-    platforms.forEach((platform)=>{
+    platforms.forEach((platform) => {
       platform.position.x -= 5;
-    })
+    });
+  } else if (keys.leftKey.pressed && isCheckpointCollisionDetectionActive) {
+    platforms.forEach((platform) => {
+      platform.position.x += 5;
+    });
   }
-
 }
 
 // manage the player's movement in the game:  monitor when the left and right arrow keys are pressed.
