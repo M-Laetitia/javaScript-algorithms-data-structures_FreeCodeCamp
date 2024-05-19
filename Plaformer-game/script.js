@@ -222,9 +222,34 @@ const animate = () => {
       player.position.y = platform.position.y + player.height;
       player.velocity.y = gravity;
     };
+  });
+  // display the checkpoint screen when the player reaches a checkpoint.
+  checkpoints.forEach((checkpoint, index, checkpoints) => {
+    const checkpointDetectionRules = [
+      player.position.x >= checkpoint.position.x,
+      player.position.y >= checkpoint.position.y,
+      player.position.y + player.height <=
+      checkpoint.position.y + checkpoint.height,
+      isCheckpointCollisionDetectionActive,
+      //ensure that the player is close enough to the checkpoint to claim it.
+      player.position.x - player.width <= checkpoint.position.x - checkpoint.width + player.width * 0.9,
+      // ensure that the player can only claim the first checkpoint or a checkpoint that has already been claimed.
+      index === 0 || checkpoints[index - 1].claimed === true,
+    ];
+
+    if (checkpointDetectionRules.every((rule) => rule)) {
+      checkpoint.claim();
+      // checks if the player has reached the last checkpoint.
+      if (index === checkpoints.length - 1) {
+        isCheckpointCollisionDetectionActive = false;
+        showCheckpointScreen("You reached the final checkpoint!");
+        movePlayer("ArrowRight", 0, false);
+      } else if(player.position.x >= checkpoint.position.x && player.position.x <= checkpoint.position.x +40){
+        showCheckpointScreen("You reached a checkpoint!");
+      }
+    };
 
   });
-
 }
 
 // manage the player's movement in the game:  monitor when the left and right arrow keys are pressed.
