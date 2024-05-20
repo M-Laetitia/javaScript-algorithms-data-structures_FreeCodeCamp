@@ -31,3 +31,15 @@ let score = 0;
 let totalScore = 0;
 let round = 1;
 
+// toggle functionality to show and hide the rules.
+rulesBtn.addEventListener("click", () => {
+    isModalShowing = !isModalShowing;
+    if(isModalShowing) {
+        rulesBtn.textContent = "Hide Rules";
+        rulesContainer.style.display = "block";
+    } else {
+        rulesBtn.textContent = "Show Rules";
+        rulesContainer.style.display = "none";
+     }
+   
+});
