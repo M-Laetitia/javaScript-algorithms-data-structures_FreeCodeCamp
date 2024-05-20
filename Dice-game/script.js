@@ -20,3 +20,14 @@ const rulesContainer = document.querySelector(".rules-container");
 
 // access the button responsible for showing and hiding the rules.
 const rulesBtn = document.getElementById("rules-btn");
+
+// When the user clicks on the Show rules button, they should be able to toggle between showing and hiding the game rules.
+let isModalShowing = false;
+// Each time the user rolls the dice, you will need to keep track of all of the dice values
+let diceValuesArr = [];
+// keep track of the current score, total score, number of rolls and which round the player is on.
+let rolls = 0;
+let score = 0;
+let totalScore = 0;
+let round = 1;
+
