@@ -31,6 +31,29 @@ let score = 0;
 let totalScore = 0;
 let round = 1;
 
+// build out this roll dice algorithm.
+const rollDice = () => {
+    diceValuesArr = [];
+    // generate 5 random numbers representing each die value.
+    for(let i = 0; i < 5; i++) {
+        const randomDice = Math.floor(Math.random() *6)+1;
+        diceValuesArr.push(randomDice);
+    }
+    //display the five random dice values on the screen.
+    listOfAllDice.forEach((dice, index) => {
+        dice.textContent = diceValuesArr[index];
+    });
+};
+
+rollDiceBtn.addEventListener("click", () => {
+    if(rolls === 3){
+      alert("You have made three rolls this round. Please select a score.");
+    }  else {
+        rolls ++;
+        rollDice();
+    }
+});
+
 // toggle functionality to show and hide the rules.
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
@@ -43,3 +66,4 @@ rulesBtn.addEventListener("click", () => {
      }
    
 });
+
