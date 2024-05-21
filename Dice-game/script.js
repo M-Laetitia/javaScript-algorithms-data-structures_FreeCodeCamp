@@ -31,7 +31,7 @@ let score = 0;
 let totalScore = 0;
 let round = 1;
 
-// build out this roll dice algorithm.
+// build out the roll dice algorithm.
 const rollDice = () => {
     diceValuesArr = [];
     // generate 5 random numbers representing each die value.
@@ -45,12 +45,19 @@ const rollDice = () => {
     });
 };
 
+// update the text content for both of those values: rolls and round
+const updateStats = () => {
+    currentRoundRollsText.textContent = rolls;
+    currentRoundText.textContent = round;
+};
+
 rollDiceBtn.addEventListener("click", () => {
     if(rolls === 3){
       alert("You have made three rolls this round. Please select a score.");
     }  else {
         rolls ++;
         rollDice();
+        updateStats();
     }
 });
 
