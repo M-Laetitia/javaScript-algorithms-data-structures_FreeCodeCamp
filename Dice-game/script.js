@@ -61,7 +61,13 @@ const updateRadioOption = (optionNode, score) => {
     scoreSpans[optionNode].textContent = `, score = ${score}`;
 };
 
-//
+// algorithm that keeps track of and displays each score for all six rounds of the game.
+const updateScore = (selectedValue, achieved) => {
+    // update the score -  wrap the parameter inside a parseInt since this string value needs to be converted to an integer.
+    totalScore += parseInt(selectedValue);
+    totalScoreText.textContent = totalScore;
+    scoreHistory.innerHTML += `<li>${achieved} : ${selectedValue}</li>`;
+};
 
 // algorithm that tracks any duplicates found in the diceValuesArr and displays a score next to the first two radio buttons.
 const getHighestDuplicates = (arr) => {
