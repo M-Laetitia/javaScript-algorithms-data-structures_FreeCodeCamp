@@ -120,6 +120,20 @@ const resetRadioOption = () => {
     };
 };
 
+// reset the game after 6 rounds
+const resetGame = () => {
+    diceValuesArr = [0,0,0,0,0];
+    score = 0;
+    totalScore = 0;
+    rolls = 0;
+    round = 1;
+
+    // reset each of the dice values to show 0
+    listOfAllDice.forEach((dice, index) => {
+        dice.textContent = diceValuesArr[index];
+    });
+};
+
 rollDiceBtn.addEventListener("click", () => {
     if(rolls === 3){
       alert("You have made three rolls this round. Please select a score.");
@@ -162,6 +176,12 @@ keepScoreBtn.addEventListener("click", () => {
         updateStats();
         resetRadioOption();
         updateScore(selectedValue, achieved);
+        // fix a limit of 6 rounds
+        if (round > 6) {
+            setTimeout(()=>{
+              alert(`Game Over! Your total score is ${totalScore}`)
+            }, 500)
+        }
     } else {
         alert("Please select an option or roll the dice");
     }
