@@ -61,6 +61,8 @@ const updateRadioOption = (optionNode, score) => {
     scoreSpans[optionNode].textContent = `, score = ${score}`;
 };
 
+//
+
 // algorithm that tracks any duplicates found in the diceValuesArr and displays a score next to the first two radio buttons.
 const getHighestDuplicates = (arr) => {
     // count the number of occurrences for each unique number in the arr
@@ -96,13 +98,28 @@ const getHighestDuplicates = (arr) => {
         updateRadioOption(0, sumOfAllDice);
     }
     updateRadioOption(5,0);
- };
+};
+
+// Before each dice roll, reset the values for the score
+const resetRadioOption = () => {
+    const resetRadioOption = () => {
+        scoreInputs.forEach((input) => {
+          input.disabled = true;
+          input.checked = false;
+        });
+        // For each of the score span elements, reset the text content.
+        scoreSpans.forEach((span)=>{
+            span.textContent = "";
+        })
+    };
+};
 
 rollDiceBtn.addEventListener("click", () => {
     if(rolls === 3){
       alert("You have made three rolls this round. Please select a score.");
     }  else {
         rolls ++;
+        resetRadioOption();
         rollDice();
         updateStats();
         getHighestDuplicates(diceValuesArr);
