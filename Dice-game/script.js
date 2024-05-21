@@ -141,7 +141,28 @@ rulesBtn.addEventListener("click", () => {
     } else {
         rulesBtn.textContent = "Show Rules";
         rulesContainer.style.display = "none";
-     }
-   
+    }
 });
 
+// After a user makes a selection, they should be able to keep that score and move onto the next round.
+keepScoreBtn.addEventListener("click", () => {
+    let selectedValue;
+    let achieved;
+    // loop through each radio button to see which one has the checked attribute.
+    for (const radioButton of scoreInputs) {
+        if(radioButton.checked) {
+          selectedValue = radioButton.value;
+          achieved = radioButton.id;
+          break;
+        }
+    }
+    if(selectedValue){
+        rolls = 0;
+        round ++;
+        updateStats();
+        resetRadioOption();
+        updateScore(selectedValue, achieved);
+    } else {
+        alert("Please select an option or roll the dice");
+    }
+});
