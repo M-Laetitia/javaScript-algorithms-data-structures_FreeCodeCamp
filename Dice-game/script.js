@@ -51,7 +51,7 @@ const updateStats = () => {
     currentRoundText.textContent = round;
 };
 
-// update the text content for both of those values: rolls and round
+// update radio option
 const updateRadioOption = (optionNode, score) => {
     // enable the radio buttons, you should set the disabled property on scoreInputs[optionNode] to false.
     scoreInputs[optionNode].disabled = false;
@@ -59,8 +59,44 @@ const updateRadioOption = (optionNode, score) => {
     scoreInputs[optionNode].value = score;
     // display the current score
     scoreSpans[optionNode].textContent = `, score = ${score}`;
-
 };
+
+// algorithm that tracks any duplicates found in the diceValuesArr and displays a score next to the first two radio buttons.
+const getHighestDuplicates = (arr) => {
+    // count the number of occurrences for each unique number in the arr
+    const counts = {};
+    for (const num of arr) {
+        // check if the current number exists in the counts object.
+        if(counts[num]){
+            counts[num] += 1;
+        } else {
+            counts[num] = 1;
+        }
+    }
+    // keep track of when a particular number appears three or four times within the arr.
+    let highestCount = 0;
+    for (const num of arr) {
+        // get the current duplicate count for each number in the arr
+        const count = counts[num];
+        if (count >= 3 && count > highestCount) {
+        highestCount = count;
+        }
+        if (count >= 4 && count > highestCount) {
+        highestCount = count;
+        }
+    }
+
+    // get the score totalling the sum of all five dice values
+    const sumOfAllDice = diceValuesArr.reduce((a, b) => a + b, 0);
+
+    if(highestCount >= 4) {
+        updateRadioOption(1, sumOfAllDice);
+    }
+    if (highestCount >= 3) {
+        updateRadioOption(0, sumOfAllDice);
+    }
+    updateRadioOption(5,0);
+ };
 
 rollDiceBtn.addEventListener("click", () => {
     if(rolls === 3){
@@ -69,6 +105,7 @@ rollDiceBtn.addEventListener("click", () => {
         rolls ++;
         rollDice();
         updateStats();
+        getHighestDuplicates(diceValuesArr);
     }
 });
 
