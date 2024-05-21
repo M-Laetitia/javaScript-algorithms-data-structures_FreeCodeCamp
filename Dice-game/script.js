@@ -51,6 +51,17 @@ const updateStats = () => {
     currentRoundText.textContent = round;
 };
 
+// update the text content for both of those values: rolls and round
+const updateRadioOption = (optionNode, score) => {
+    // enable the radio buttons, you should set the disabled property on scoreInputs[optionNode] to false.
+    scoreInputs[optionNode].disabled = false;
+    // update the radio button's value to the current score.
+    scoreInputs[optionNode].value = score;
+    // display the current score
+    scoreSpans[optionNode].textContent = `, score = ${score}`;
+
+};
+
 rollDiceBtn.addEventListener("click", () => {
     if(rolls === 3){
       alert("You have made three rolls this round. Please select a score.");
