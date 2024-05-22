@@ -14,3 +14,7 @@ let cid = [
  
 const purcharseBtn = document.getElementById('purchase-btn'); 
 const changeDue = document.getElementById('change-due');
+const priceDisplay = document.getElementById('price');
+const changeDueDisplay = document.getElementById('price-due');
+
+priceDisplay.innerHTML = `Total : ${price}`
