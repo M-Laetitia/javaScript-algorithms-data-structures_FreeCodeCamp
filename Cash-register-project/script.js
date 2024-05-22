@@ -17,4 +17,19 @@ const changeDue = document.getElementById('change-due');
 const priceDisplay = document.getElementById('price');
 const changeDueDisplay = document.getElementById('price-due');
 
-priceDisplay.innerHTML = `Total : ${price}`
+priceDisplay.innerHTML = `Total : ${price}`;
+
+const checkCashRegister =()=>{
+  const cash = document.getElementById('cash').value;
+  if(Number(cash) < price){
+    alert("Customer does not have enough money to       purchase the item");
+    cash.value = '';
+    return;
+  }
+  if(Number(cash) === price) {
+    changeDue.innerText = "No change due - customer paid with exact cash";
+    cash.value = '';
+    return;
+  }
+
+}
