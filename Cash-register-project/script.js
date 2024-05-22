@@ -32,4 +32,6 @@ const checkCashRegister =()=>{
     return;
   }
 
+  let changeDue = (Number(cash) - price).toFixed(2);
+  changeDueDisplay.innerHTML = `Change due: ${changeDue}`;
 }
