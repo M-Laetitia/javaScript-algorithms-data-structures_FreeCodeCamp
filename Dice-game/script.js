@@ -127,6 +127,35 @@ const detectFullHouse=(arr)=>{
     updateRadioOption(5,0);
 };
 
+// algorithm that checks for the presence of a straight.
+const checkForStraights = (arr) => {
+    //  sort the list of numbers in the array.
+    const sortedNumbersArr  = arr.sort((a,b) => a - b);
+    // check for only unique numbers with Set
+    const uniqueNumbersArr = [...new Set(sortedNumbersArr)];
+    const uniqueNumbersStr = uniqueNumbersArr.join("");
+
+    // 3 possibilities for a small straight
+    const smallStraightsArr = ["1234","2345","3456"];
+    // two possibilities for a large straight
+    const largeStraightsArr = ["12345", "23456"];
+
+    // make radio button option enabled with a score of 40 points for small Straight.
+    smallStraightsArr.forEach((straight)=>{
+        if(uniqueNumbersStr.includes(straight)){
+          updateRadioOption(3, 30);
+        }
+    })
+
+    // make radio button option enabled with a score of 40 points for large Straight.
+    if(largeStraightsArr.includes(uniqueNumbersStr)) {
+        updateRadioOption(4,40); 
+    }
+
+    // case when the user does not get a small or large straight
+    updateRadioOption(5, 0); 
+
+};
 
 // Before each dice roll, reset the values for the score
 const resetRadioOption = () => {
@@ -176,6 +205,7 @@ rollDiceBtn.addEventListener("click", () => {
         updateStats();
         getHighestDuplicates(diceValuesArr);
         detectFullHouse(diceValuesArr);
+        checkForStraights(diceValuesArr);
     }
 });
 
