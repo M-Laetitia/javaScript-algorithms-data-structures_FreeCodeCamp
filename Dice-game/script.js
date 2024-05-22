@@ -106,6 +106,28 @@ const getHighestDuplicates = (arr) => {
     updateRadioOption(5,0);
 };
 
+
+// check for both a "Three of a kind" and a pair and display that option on the screen.
+const detectFullHouse=(arr)=>{
+    const counts = {};
+    // count the occurrences for each number
+    for (const num of arr) {
+        counts[num] = counts[num] ? counts[num] + 1 : 1;
+    }
+    // Object.values(): create an array of only the counts values.
+    // include(): check if 3 is inside this new array.
+    const hasThreeOfAKind =  Object.values(counts).includes(3);
+    const hasPair = Object.values(counts).includes(2);
+
+    // Full house case resulting in 25 points.
+    if(hasThreeOfAKind  && hasPair) {
+        updateRadioOption(2,25);
+    }
+    // option for None of the above should be enabled with 0 points awarded.
+    updateRadioOption(5,0);
+};
+
+
 // Before each dice roll, reset the values for the score
 const resetRadioOption = () => {
     const resetRadioOption = () => {
@@ -132,6 +154,16 @@ const resetGame = () => {
     listOfAllDice.forEach((dice, index) => {
         dice.textContent = diceValuesArr[index];
     });
+
+    // update the score history, total, rounds and rolls text.
+    totalScoreText.textContent = totalScore;
+    scoreHistory.innerHTML = "";
+  
+    currentRoundRollsText.textContent = rolls;
+    currentRoundText.textContent = round;
+
+    // reset all of the radio buttons.
+    resetRadioOption();
 };
 
 rollDiceBtn.addEventListener("click", () => {
@@ -143,6 +175,7 @@ rollDiceBtn.addEventListener("click", () => {
         rollDice();
         updateStats();
         getHighestDuplicates(diceValuesArr);
+        detectFullHouse(diceValuesArr);
     }
 });
 
@@ -179,7 +212,8 @@ keepScoreBtn.addEventListener("click", () => {
         // fix a limit of 6 rounds
         if (round > 6) {
             setTimeout(()=>{
-              alert(`Game Over! Your total score is ${totalScore}`)
+              alert(`Game Over! Your total score is ${totalScore}`);
+              resetGame();
             }, 500)
         }
     } else {
