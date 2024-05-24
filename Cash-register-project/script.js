@@ -22,7 +22,7 @@ priceDisplay.innerHTML = `Total : ${price}`;
 
 const checkCashRegister =()=>{
   const cash = document.getElementById('cash').value;
-  let changeDue = (Number(cash) - price).toFixed(2);
+  
 
   if(Number(cash) < price){
     alert("Customer does not have enough money to       purchase the item");
@@ -35,8 +35,8 @@ const checkCashRegister =()=>{
     return;
   }
 
-  
-  changeDueDisplay.innerHTML = `Change due: ${changeDue}` ;
+  let changeDueAmount = (Number(cash.value) - price).toFixed(2);
+  changeDueDisplay.innerHTML = `Change due: ${changeDueAmount}` ;
   let status = "";
   let amount = [0.01,0.05,0.1,0.25,1,5,10,20,100];
   let totalMoney = 0;
@@ -49,16 +49,29 @@ const checkCashRegister =()=>{
 }
 
 
+
 purcharseBtn.addEventListener('click', ()=>{
   const cash = document.getElementById('cash').value;
   checkCashRegister();
 });
 
-
 const displayDrawerCash =()=>{
+  const currencyName = {
+    PENNY: 'Pennies',
+    NICKEL: 'Nickels',
+    DIME: 'Dimes',
+    QUARTER: 'Quarters',
+    ONE: 'Ones',
+    FIVE: 'Fives',
+    TEN: 'Tens',
+    TWENTY: 'Twenties',
+    'ONE HUNDRED': 'Hundreds'
+  };
+
   cid.forEach((money)=>{
-    const name = money[0];
-    const capitalized = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    const currencyKey = money[0];
+     const currencyFormattedName = currencyName[currencyKey];
+    const capitalized = currencyFormattedName.charAt(0).toUpperCase() + currencyFormattedName.slice(1).toLowerCase();
     cashDrawer.innerHTML += `<p>${capitalized}: $${money[1].toFixed(2)}</p>`;
     
   });
