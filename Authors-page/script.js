@@ -45,6 +45,8 @@ const displayAuthors =(authors)=>{
         <div id="${index}" class="user-card">
             <h2 class="author-name">${author}</h2>
             <img class="user-img" src="${image}" alt="${author} avatar">
+            <div class="purple-divider"></div>
+            <p class="bio">${bio.length > 50 ? bio.slice(0, 50) + "..." : bio}</p>
             <p class="bio">${bio}</p>
             <a href="${url}" class="author-link" target="_blank">${author}'s author page</a>
         </div>
@@ -52,4 +54,6 @@ const displayAuthors =(authors)=>{
     });
 }
 loadMoreBtn.addEventListener('click',fetchMoreAuthors);
+
+// Some of the author bios are much longer than others. To give the cards a uniform look, you can extract the first 50 characters of each one and replace the rest with an ellipsis (...). Otherwise, you can show the entire bio.
 
