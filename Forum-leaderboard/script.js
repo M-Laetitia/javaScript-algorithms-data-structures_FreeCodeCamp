@@ -5,6 +5,30 @@ const avatarUrl = "https://sea1.discourse-cdn.com/freecodecamp";
 
 const postsContainer = document.getElementById("posts-container");
 
+// To display data in the Activity column, you need to use the bumped_at property of each topic, which is a timestamp in the ISO 8601 format. You need to process this data before you can show how much time has passed since a topic had any activity.
+const timeAgo = (time) => {
+    const currentTime = new Date();
+    const lastPost = new Date(time);
+    const timeDifference = currentTime - lastPost;
+    // store the number of milliseconds in a minute
+    const msPerMinute = 1000 * 60;
+    // get the number of minutes ago the post was created.
+    const minutesAgo = Math.floor(timeDifference / msPerMinute);
+    // store the number of hours that have passed since the last post.
+    const hoursAgo = Math.floor(minutesAgo / 60);
+    //  store the number of days that have passed since the last post. 
+    const daysAgo = Math.floor(hoursAgo / 24);
+
+    if(minutesAgo < 60) {
+        return `${minutesAgo}m ago`;
+    }
+    if (hoursAgo  < 24) {
+        return `${hoursAgo}h ago`;
+    }
+    return `${daysAgo}d ago`;
+    
+};
+
 //  request the data from an API >  asynchronous operation, which means that tasks execute independently of the main program flow.
 const fetchData = async () => {
   // use a try...catch statement instead. to handle errors
@@ -52,9 +76,14 @@ const showLatestPosts = (data) => {
         <td></td>
         <td>${posts_count - 1}</td>
         <td>${views}</td>
-        <td></td>
+        <td>
+            ${timeAgo(bumped_at)}
+        </td>
         </tr>`;
-        
+
     }).join("")
    
 };
+
+
+
