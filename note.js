@@ -3,7 +3,8 @@
 // & getElementsByClassName() > returns a Collection
 // & parseFloat() / hasOwnProperty()
 // & showModal() / confirm()
-// & map() / reduce() / Object.values() / arr.sort() / arra.Set() / slice()
+// & map() / reduce() / Object.values() / arr.sort() / arra.Set() / slice() / replace() / concat()
+// & on array > hasOwnProperty()
 
 
 
@@ -688,3 +689,41 @@ fetch("sample-url-goes-here")
 
 // & .catch() method 
 // The .catch() method is another asynchronous JavaScript method you can use to handle errors. This is useful in case the Promise gets rejected.
+
+// ^ Forum leaderboard -----------------
+// ^ -----------------------------------
+// ^ asynchronous programming, Fetch API, promises, Async/Await, and the try..catch statement.
+
+// & asynchronous operation / async keyword
+// request the data from an API. This is known as an asynchronous operation, which means that tasks execute independently of the main program flow.
+// You can use the async keyword to create an asynchronous function, which returns a promise.
+
+const example = async () => {
+  console.log("this is an example");
+};
+
+// &  try...catch statement
+//  use a try...catch statement to handle errors
+// The try block is designed to handle potential errors, and the code inside the catch block will be executed in case an error occurs.
+
+try {
+  const name = "freeCodeCamp";
+  name = "fCC";
+} catch (err) {
+  console.log(err); // TypeError: Assignment to constant variable.
+}
+
+// & await keyword
+//  use the await keyword to handle the asynchronous nature of the fetch() method.
+// The await keyword waits for a promise to resolve and returns the result.
+
+const example = async () => {
+  const data = await fetch("https://example.com/api");
+  console.log(data);
+}
+
+// & replace 
+if (user) {
+  // customize the avatar's size / assign it the result of using the replace method on user.avatar_template.
+  const avatar = user.avatar_template.replace(/{size}/, 30);
+}
