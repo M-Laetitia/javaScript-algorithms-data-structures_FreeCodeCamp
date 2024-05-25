@@ -33,6 +33,9 @@ const displayAuthors =(authors)=>{
         authorContainer.innerHTML += `
         <div id="${index}" class="user-card">
             <h2 class="author-name">${author}</h2>
+            <img class="user-img" src="${image}" alt="${author} avatar">
+            <p class="bio">${bio}</p>
+            <a href="${url}" class="author-link" target="_blank">${author}'s author page</a>
         </div>
         `;
     });
