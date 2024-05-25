@@ -15,7 +15,9 @@ fetch("https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json")
     //  to start working with the data,  use another .then() method.
     .then((data) => {
         authorDataArr = data; //  assign the author data to the empty authorDataArr array
-        console.log("Author Data Array:", authorDataArr)
+        console.log("Author Data Array:", authorDataArr);
+        // extract a portion of the authors with the startingIndex and endingIndex variables, with the .slice() array method.
+        displayAuthors(authorDataArr.slice(startingIndex,endingIndex));
     })
     // use catch() to handle errors  in case the Promise gets rejected.
     .catch((err) => {
