@@ -27,6 +27,8 @@ fetch("https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json")
     // use catch() to handle errors  in case the Promise gets rejected.
     .catch((err) => {
         console.error(`There was an error: ${err}`);
+        // handling errors when the data fail to load - show an error msg in the UI
+        authorContainer.innerHTML = `<p class="error-msg">There was an error loading the authors</p>`
     }); // terminate the code with a semicolon. You couldn't do that in the previous steps because you'll signal to JavaScript to stop parsing your code, which will affect the fetch() syntax.
 
 //  make the Load More Authors button fetch more authors whenever it's clicked.
@@ -55,5 +57,4 @@ const displayAuthors =(authors)=>{
 }
 loadMoreBtn.addEventListener('click',fetchMoreAuthors);
 
-// Some of the author bios are much longer than others. To give the cards a uniform look, you can extract the first 50 characters of each one and replace the rest with an ellipsis (...). Otherwise, you can show the entire bio.
 
