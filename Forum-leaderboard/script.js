@@ -131,7 +131,7 @@ const showLatestPosts = (data) => {
         return `
         <tr>
         <td>
-            <p class="post-title">${title}</p>
+            <a target="_blank" href="${forumTopicUrl}${slug}/${id}" class="post-title">${title}</a>
             ${forumCategory(category_id)}
         </td>
         <div class="avatar-container">
@@ -147,7 +147,6 @@ const showLatestPosts = (data) => {
     }).join("")
    
 };
-
 
 
 
