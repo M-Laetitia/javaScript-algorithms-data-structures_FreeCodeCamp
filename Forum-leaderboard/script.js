@@ -17,6 +17,26 @@ const allCategories = {
     560: { category: "Backend Development", className: "backend" },
 };
 
+// create a function to retrieve the category name from the allCategories object.
+const forumCategory = (id) => {
+    //  store the category name and class name for each category
+    let selectedCategory = {};
+    if (allCategories.hasOwnProperty(id)) {
+        const { className, category } = allCategories[id];
+        selectedCategory.className = className;
+        selectedCategory.category = category;
+    } else {
+        selectedCategory.className = "general";
+        selectedCategory.category = "General";
+        selectedCategory.id = 1;
+    }
+    // Every category will have a URL that points to the category on the freeCodeCamp forum.
+    const url = `${forumCategoryUrl}${selectedCategory.className}/${id}`;
+    const linkText = selectedCategory.category;
+    const linkClass = `category ${selectedCategory.className}`;
+    return `<a href="${url}" class="${linkClass}" target="_blank" >${linkText}</a>`;
+};
+
 // To display data in the Activity column, you need to use the bumped_at property of each topic, which is a timestamp in the ISO 8601 format. You need to process this data before you can show how much time has passed since a topic had any activity.
 const timeAgo = (time) => {
     const currentTime = new Date();
@@ -94,6 +114,7 @@ const showLatestPosts = (data) => {
         <tr>
         <td>
             <p class="post-title">${title}</p>
+            ${forumCategory(category_id)}
         </td>
         <td></td>
         <td>${posts_count - 1}</td>
@@ -106,6 +127,7 @@ const showLatestPosts = (data) => {
     }).join("")
    
 };
+
 
 
 
