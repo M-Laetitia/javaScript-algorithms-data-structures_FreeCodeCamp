@@ -18,6 +18,11 @@ fetch("https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json")
         console.log("Author Data Array:", authorDataArr);
         // extract a portion of the authors with the startingIndex and endingIndex variables, with the .slice() array method.
         displayAuthors(authorDataArr.slice(startingIndex,endingIndex));
+        // make it clear when there's no more data to display by disabling the button and changing its text
+        if (authorDataArr.length <= endingIndex) {
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.textContent = 'No more data to load';
+        }
     })
     // use catch() to handle errors  in case the Promise gets rejected.
     .catch((err) => {
