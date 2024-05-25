@@ -5,6 +5,18 @@ const avatarUrl = "https://sea1.discourse-cdn.com/freecodecamp";
 
 const postsContainer = document.getElementById("posts-container");
 
+// create a category object which holds all of the forum categories and classNames for the styling.
+const allCategories = {
+    299: { category: "Career Advice", className: "career" },
+    409: { category: "Project Feedback", className: "feedback" },
+    417: { category: "freeCodeCamp Support", className: "support" },
+    421: { category: "JavaScript", className: "javascript" },
+    423: { category: "HTML - CSS", className: "html-css" },
+    424: { category: "Python", className: "python" },
+    432: { category: "You Can Do This!", className: "motivation" },
+    560: { category: "Backend Development", className: "backend" },
+};
+
 // To display data in the Activity column, you need to use the bumped_at property of each topic, which is a timestamp in the ISO 8601 format. You need to process this data before you can show how much time has passed since a topic had any activity.
 const timeAgo = (time) => {
     const currentTime = new Date();
@@ -85,7 +97,7 @@ const showLatestPosts = (data) => {
         </td>
         <td></td>
         <td>${posts_count - 1}</td>
-        <td>${views}</td>
+        <td>${viewCount(views)}</td>
         <td>
             ${timeAgo(bumped_at)}
         </td>
