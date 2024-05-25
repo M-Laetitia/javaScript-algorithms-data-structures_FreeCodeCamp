@@ -24,6 +24,12 @@ fetch("https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json")
         console.error(`There was an error: ${err}`);
     }); // terminate the code with a semicolon. You couldn't do that in the previous steps because you'll signal to JavaScript to stop parsing your code, which will affect the fetch() syntax.
 
+//  make the Load More Authors button fetch more authors whenever it's clicked.
+const fetchMoreAuthors = () => {
+    startingIndex += 8;
+    endingIndex  += 8;
+    displayAuthors(authorDataArr.slice(startingIndex, endingIndex)); 
+}
 
 // function to populate the UI with the author data.
 const displayAuthors =(authors)=>{
@@ -40,4 +46,5 @@ const displayAuthors =(authors)=>{
         `;
     });
 }
+loadMoreBtn.addEventListener('click',fetchMoreAuthors);
 
