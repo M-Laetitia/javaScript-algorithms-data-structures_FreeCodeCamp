@@ -15,6 +15,7 @@ const fetchData = async () => {
         // get the response body as a JSON object. The .json() method of your res variable returns a promise, which means you will need to await it.
         const data = await res.json();
         console.log(data);
+        showLatestPosts(data);
     
     } catch (err) {
       console.log(err);
@@ -22,3 +23,38 @@ const fetchData = async () => {
   }
 }
 fetchData();
+
+// display the data on the page
+const showLatestPosts = (data) => {
+    //  use destructuring to get the topic_list and users properties from the data object.
+    const {topic_list, users } = data;
+    const {topics} = topic_list;
+
+    // populating the data inside the postsContainer.
+    postsContainer.innerHTML = topics.map((item)=>{
+        // destructure  properties from the item object:
+        const {
+            id,
+            title,
+            views,
+            posts_count,
+            slug,
+            posters,
+            category_id,
+            bumped_at,
+          } = item; 
+        
+        return `
+        <tr>
+        <td>
+            <p class="post-title">${title}</p>
+        </td>
+        <td></td>
+        <td>${posts_count - 1}</td>
+        <td>${views}</td>
+        <td></td>
+        </tr>`;
+        
+    }).join("")
+   
+};
