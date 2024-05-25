@@ -21,6 +21,7 @@ fetch("https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json")
         // make it clear when there's no more data to display by disabling the button and changing its text
         if (authorDataArr.length <= endingIndex) {
             loadMoreBtn.disabled = true;
+            loadMoreBtn.style.cursor = "not-allowed";
             loadMoreBtn.textContent = 'No more data to load';
         }
     })
