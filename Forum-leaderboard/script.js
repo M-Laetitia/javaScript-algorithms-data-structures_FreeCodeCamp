@@ -71,6 +71,24 @@ const viewCount = (views) => {
     return views;
 };
 
+// Each forum post will include a list of user avatar images which represent all of the users participating in the conversation for that topic.
+const avatars = (posters, users) => {
+    // loop through the posters array to get all of their avatars.
+    return posters.map((poster) => {
+        //  find the correct user in the users array
+        const user = users.find((user)=> user.id === poster.user_id);
+        // check if the user exists
+        if (user) {
+            // customize the avatar's size / assign it the result of using the replace method on user.avatar_template.
+            const avatar = user.avatar_template.replace(/{size}/, 30);
+            // construct the userAvatarUrl
+            const userAvatarUrl = avatar.startsWith("/user_avatar/")  ? avatarUrl.concat(avatar) : avatar;
+            // return the image for the user avatar.
+            return `<img src="${userAvatarUrl}" alt="${user.name}">`
+        }
+    }).join("");
+};
+
 //  request the data from an API >  asynchronous operation, which means that tasks execute independently of the main program flow.
 const fetchData = async () => {
   // use a try...catch statement instead. to handle errors
@@ -116,7 +134,9 @@ const showLatestPosts = (data) => {
             <p class="post-title">${title}</p>
             ${forumCategory(category_id)}
         </td>
-        <td></td>
+        <div class="avatar-container">
+            ${avatars(posters,users)}
+        </div>
         <td>${posts_count - 1}</td>
         <td>${viewCount(views)}</td>
         <td>
