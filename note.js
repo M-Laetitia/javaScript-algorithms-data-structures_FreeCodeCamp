@@ -1,8 +1,9 @@
-// & template literals
+// & template literals / assignment operator (+=)
 // & innerHTML / innerText / textContent /  string interpolation / 
 // & getElementsByClassName() > returns a Collection
 // & parseFloat() / hasOwnProperty()
 // & showModal() / confirm()
+// & map() / reduce() / Object.values() / arr.sort() / arra.Set() / slice()
 
 
 
@@ -439,6 +440,7 @@ array.reduce((acc, el) => {
 
 // set an initial value.
 array.reduce((acc, el) => acc + el.toLowerCase(), "");
+const sumOfAllDice = diceValuesArr.reduce((a, b) => a + b, 0);
 
 // & return false (html)
 //  Normally, when a form is submitted, the event triggers a page refresh. To resolve this, add return false; after your calculate(); call in the onsubmit attribute.
@@ -491,7 +493,15 @@ numbersArr.forEach((el) => {
 
 // & Set
 // . A Set is a data structure that only allows unique values. If you pass an array into the Set constructor, it will remove any duplicate values.
+const a = new Set([1, 2, 3]);
+const b = new Map([
+  [1, "one"],
+  [2, "two"],
+  [4, "four"],
+]);
+console.log(a.union(b)); // Set(4) {1, 2, 3, 4}
 
+const uniqueNumbersArr = [...new Set(sortedNumbersArr)];
 // & Object.keys()
 
 // & Math.min - Math.max
@@ -650,3 +660,31 @@ obj = {
   b: b,
   c: c
 }
+
+// ^ Dice Game -------------------------
+// ^ -----------------------------------
+// ^  break down complex problems into a sequence of well-defined, step-by-step instructions.
+// ^ manage game state, implement game logic for rolling dice, keeping score, and applying rules for various combin ations.
+// ^ event handling, array manipulation, conditional logic, and updating the user interface dynamically based on game state.
+
+
+// ^ Author page -----------------------
+// ^ -----------------------------------
+// ^ Fetch en promises - fetch data from an external API, then work with asynchronous JavaScript.
+// ^ use the fetch method, then dynamically update the DOM to display the fetched data / paginate data and load results in batches.
+
+// & The Fetch API / fetch()
+// The Fetch API is a built-in JavaScript interface to make network requests to a server. It has a fetch() method you can use to make GET, POST, PUT, or PATCH requests. 
+
+// make a GET request with the fetch() method: 
+fetch("url-goes-here")
+
+// &  fetch() method / Promise / Response object / .then()
+// The fetch() method returns a Promise, which is a placeholder object that will either be fulfilled if your request is successful, or rejected if your request is unsuccessful.
+//If the Promise is fulfilled, it resolves to a Response object, and you can use the .then() method to access the Response.
+// Here's how you can chain .then() to the fetch() method:
+fetch("sample-url-goes-here")
+  .then((res) => res)
+
+// & .catch() method 
+// The .catch() method is another asynchronous JavaScript method you can use to handle errors. This is useful in case the Promise gets rejected.
