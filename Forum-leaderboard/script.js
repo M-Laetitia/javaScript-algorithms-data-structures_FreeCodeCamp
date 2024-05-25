@@ -29,6 +29,16 @@ const timeAgo = (time) => {
     
 };
 
+//  function to convert view counts to a more readable format.  1000 >  1k,  100,000 > 100k.
+const viewCount = (views) => {
+    // get the number of thousands in the views variable rounded down to the nearest thousand.
+    const thousands = Math.floor(views / 1000);
+    if(views >= 1000){
+        return `${thousands}k`;
+    }
+    return views;
+};
+
 //  request the data from an API >  asynchronous operation, which means that tasks execute independently of the main program flow.
 const fetchData = async () => {
   // use a try...catch statement instead. to handle errors
