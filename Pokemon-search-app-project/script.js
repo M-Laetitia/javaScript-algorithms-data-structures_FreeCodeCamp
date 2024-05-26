@@ -1,6 +1,6 @@
 const pokemonID = document.getElementById('pokemon-id');
 const pokemonName = document.getElementById('pokemon-name');
-const spriteContainer = document.getElementById('sprite-container');
+const pokemonSprite = document.getElementById('pokemon-sprite');
 const types = document.getElementById('types');
 const height = document.getElementById('height');
 const weight = document.getElementById('weight');
@@ -12,3 +12,10 @@ const specialDefense = document.getElementById('special-defense');
 const speed = document.getElementById('speed');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+
+
+
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  getPokemon();
+});
