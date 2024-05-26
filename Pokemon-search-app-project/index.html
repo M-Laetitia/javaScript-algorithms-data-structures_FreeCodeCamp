@@ -8,17 +8,71 @@
 </head>
 <body>
 
-    <form role="search" id="search-form">
-        <label for="search-input">Search for Pokémon Name or ID:</label>
-        <input type="text" name="pokemon" id="search-input" required />
-        <button id="search-button">Search</button>
-    </form>
+    <div class="container">
+        <div class="search-container">
+            <form role="search" id="search-form">
+                <label for="search-input">Enter a Name or ID:</label>
+                <div>
+                    <input type="text" name="pokemon" id="search-input" required />
+                    <button id="search-button">SEARCH</button>
+                </div>
+            </form>
+        </div>
+        <div class="info-container">
+            <div class="background-gradient"></div>
+            <div id="pokemon-sprite"></div>
+            <div class="infos">
+                <div class="nameId">
+                    <p id="pokemon-name">Charizard</p>
+                    <p id="pokemon-id">#006</p>
+                </div>
+                <div class="weight-height">
+                    <p id="weight">Weight: 905</p>
+                    <p id="height">Height: 17</p>
+                </div>
+                <div class="types-container">
+                    <p id="types">Fire</p>
+                    <p id="types">Flying</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="stat-container">
+            <div id="title"><p>BASE STATS :</p></div>
+            <div class="stats">
+                <div>
+                    <p>HP:</p>
+                    <p>78</p>
+                </div>
+                <div>
+                    <p>Attach:</p>
+                    <p>84</p>
+                </div>
+                <div>
+                    <p>Defense:</p>
+                    <p>78</p>
+                </div>
+                <div>
+                    <p>Sp.Attack:</p>
+                    <p>109</p>
+                </div>
+                <div>
+                    <p>Sp.Defense:</p>
+                    <p>85</p>
+                </div>
+                <div>
+                    <p>Speed:</p>
+                    <p>100</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+   
     <p id="pokemon-name">Name:</p>
-    <p id="pokemon-id">Id:</p>
-    <p id="weight">Weight:</p>
-    <p id="height">Height:</p>
-    <p id="types">Types:</p>
+    
+   
+    
     <p id="hp">Hp:</p>
     <p id="attack">Attack:</p>
     <p id="defense">Defense:</p>
@@ -26,9 +80,7 @@
     <p id="special-defense">Special defense:</p>
     <p id="speed">Speed:</p>
 
-    <div id="pokemon-sprite">
-        
-    </div>
+
 
     <script src="./script.js"></script>    
 </body>
