@@ -37,7 +37,14 @@ const getPokemon = async () => {
     pokemonSprite.innerHTML = `
       <img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">
     `;
-    
+
+    // stats
+    hp.textContent = data.stats[0].base_stat;
+    attack.textContent = data.stats[1].base_stat;
+    defense.textContent = data.stats[2].base_stat;
+    specialAttack.textContent = data.stats[3].base_stat;
+    specialDefense.textContent = data.stats[4].base_stat;
+    speed.textContent = data.stats[5].base_stat;
 
   } catch (err) {
     // If an error occurs during the fetch or JSON parsing, the catch block handles it and display an alert message.
