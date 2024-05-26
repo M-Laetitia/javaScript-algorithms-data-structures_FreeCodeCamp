@@ -46,6 +46,15 @@ const getPokemon = async () => {
     specialDefense.textContent = data.stats[4].base_stat;
     speed.textContent = data.stats[5].base_stat;
 
+    // types
+    // Clear the content of the 'types' element
+    types.innerHTML = "";
+    types.innerHTML = data.types
+      // Map over the types array to create an HTML string for each type
+      .map(slot => `<span class="type ${slot.type.name}">${slot.type.name}</span>`);
+      // Join the array of HTML strings into a single string
+      .join('');
+
   } catch (err) {
     // If an error occurs during the fetch or JSON parsing, the catch block handles it and display an alert message.
     alert('Pokémon not found');
