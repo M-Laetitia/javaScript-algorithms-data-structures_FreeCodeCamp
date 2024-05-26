@@ -29,6 +29,16 @@ const getPokemon = async () => {
     // This step also pauses the function execution until the promise is resolved
     const data = await response.json();
 
+    // Pokémon info
+    pokemonName.textContent = `${data.name.toUpperCase()}`;
+    pokemonID.textContent = `#${data.id}`;
+    weight.textContent = `Weight: ${data.weight}`;
+    height.textContent = `Height: ${data.height}`;
+    pokemonSprite.innerHTML = `
+      <img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">
+    `;
+    
+
   } catch (err) {
     // If an error occurs during the fetch or JSON parsing, the catch block handles it and display an alert message.
     alert('Pokémon not found');
