@@ -51,7 +51,7 @@ const getPokemon = async () => {
     types.innerHTML = "";
     types.innerHTML = data.types
       // Map over the types array to create an HTML string for each type
-      .map(slot => `<span class="type ${slot.type.name}">${slot.type.name}</span>`);
+      .map(slot => `<span class="type ${slot.type.name}">${slot.type.name}</span>`)
       // Join the array of HTML strings into a single string
       .join('');
 
@@ -64,6 +64,27 @@ const getPokemon = async () => {
 };
 
 searchForm.addEventListener('submit', e => {
+  // clear any previous content
+  clearDisplay();
   e.preventDefault();
   getPokemon();
 });
+
+// clear any previous content
+const clearDisplay = () => {
+  const sprite = document.getElementById('sprite');
+  if (sprite) sprite.remove();
+
+  // reset stats
+  pokemonName.textContent = '';
+  pokemonID.textContent = '';
+  types.innerHTML = '';
+  height.textContent = '';
+  weight.textContent = '';
+  hp.textContent = '';
+  attack.textContent = '';
+  defense.textContent = '';
+  specialAttack.textContent = '';
+  specialDefense.textContent = '';
+  speed.textContent = '';
+};
