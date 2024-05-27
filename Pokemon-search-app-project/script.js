@@ -72,7 +72,7 @@ const getPokemon = async () => {
       const firstType = data.types[0].type.name;
 
       // Define the list of all possible type classes
-      const types = ["fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"];
+      const types = ["fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy", "normal"];
       types.forEach(type => {
         backgroundGradient.classList.remove(`${type}-gradient`);
         title.classList.remove(`${type}-gradient`);
