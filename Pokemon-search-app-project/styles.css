@@ -79,7 +79,7 @@ body {
     position: relative;
     
     .background-gradient {
-        background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6));
+        /* background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6)); */
         height: 260px;
         width: 560px;
         border-radius: 0 0  50% 50%; 
@@ -139,8 +139,7 @@ body {
         margin-top: 1rem;
         column-gap: .7rem;
 
-        #types {
-            background-color: red;
+        span {
             padding: 0.3rem 1rem;
             height: 28px;
             border-radius: 23px;
@@ -158,7 +157,7 @@ body {
     transform: translate(-50%, 182%);
     width: 415px;
     #title {
-        background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6));
+        /* background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6)); */
         width: 100%;
         height: 45px;
         border-radius: 20px 20px 0 0;
@@ -188,8 +187,22 @@ body {
         }
     }
 }
-.fire { background-color: hsl(25, 100%, 66%);}
-.fire-gradient {background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6));}
+
+.stats-title {
+    display: none;
+}
+
+#types {
+    display: flex;
+    column-gap: .3rem;
+
+    span{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
 
 
 .fighting { background-color: hsl(343, 59%, 53%);}
@@ -198,9 +211,56 @@ body {
 .psychic { background-color: hsl(358, 92%, 71%);}
 .psychic-gradient {background: linear-gradient(to right, hsl(358, 92%, 71%), hsla(358, 92%, 71%, 0.6));}
 
+.poison { background-color: hsl(281, 46%,60%);}
+.poison-gradient {background: linear-gradient(to right, hsl(281, 46%,60%), hsla(281, 46%,60%, 0.6));}
+
+.dragon { background-color: hsl(208, 90%,40%);}
+.dragon-gradient {background: linear-gradient(to right, hsl(208, 90%,40%), hsla(208, 90%,40%, 0.6));}
+
+.ghost { background-color: hsl(225, 35%,50%);}
+.ghost-gradient {background: linear-gradient(to right, hsl(225, 35%,50%), hsla(225, 35%,50%, 0.6));}
+
+.dark { background-color: hsl(262, 10%, 36%);}
+.dark-gradient {background: linear-gradient(to right, hsl(262, 10%, 36%), hsla(262, 10%, 36%, 0.6));}
+
+.ground { background-color: hsl(20, 66%,56%);}
+.ground-gradient {background: linear-gradient(to right, hsl(20, 66%,56%), hsla(20, 66%,56%, 0.6));}
+
+.fire { background-color: hsl(25, 100%, 66%);}
+.fire-gradient {background: linear-gradient(to right, hsl(25, 100%, 66%), hsla(25, 100%, 66%, 0.6));}
+
+.fairy { background-color: hsl(304, 71%, 74%);}
+.fairy-gradient {background: linear-gradient(to right, hsl(304, 71%, 74%), hsla(304, 71%, 74%, 0.6));}
+
+.water { background-color: hsl(210, 62%, 57%);}
+.water-gradient {background: linear-gradient(to right, hsl(210, 62%, 57%), hsla(210, 62%, 57%, 0.6));}
+
+.flying { background-color: hsl(221, 53%, 71%);}
+.flying-gradient {background: linear-gradient(to right, hsl(221, 53%, 71%), hsla(221, 53%, 71%, 0.6));}
+
+.normal { background-color: hsl(208, 8%, 60%);}
+.normal-gradient {background: linear-gradient(to right, hsl(208, 8%, 60%), hsla(208, 8%, 60%, 0.6));}
+
+.rock { background-color: hsl(44, 35%, 66%);}
+.rock-gradient {background: linear-gradient(to right, hsl(44, 35%, 66%), hsla(44, 35%, 66%, 0.6));}
 
 .electric { background-color: hsl(49, 88%, 59%);}
 .electric-gradient {background: linear-gradient(to right, hsl(49, 88%, 59%), hsla(49, 88%, 59%, 0.6));}
+
+.bug { background-color: hsl(80, 63%, 46%);}
+.bug-gradient {background: linear-gradient(to right, hsl(80, 63%, 46%), hsla(80, 63%, 46%, 0.6));}
+
+.grass { background-color: hsl(115, 41%, 55%);}
+.grass-gradient {background: linear-gradient(to right, hsl(115, 41%, 55%), hsla(115, 41%, 55%, 0.6));}
+
+.ice { background-color: hsl(171, 48%, 63%);}
+.ice-gradient {background: linear-gradient(to right, hsl(171, 48%, 63%), hsla(171, 48%, 63%, 0.6));}
+
+.steel { background-color: hsl(196, 28%, 49%);}
+.steel-gradient {background: linear-gradient(to right, hsl(196, 28%, 49%), hsla(196, 28%, 49%, 0.6));}
+
+
+
 
 
 
