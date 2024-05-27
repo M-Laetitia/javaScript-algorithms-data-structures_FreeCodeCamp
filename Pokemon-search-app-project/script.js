@@ -12,6 +12,9 @@ const specialDefense = document.getElementById('special-defense');
 const speed = document.getElementById('speed');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+const backgroundGradient = document.querySelector('.background-gradient');
+const title = document.getElementById('title');
+const statsTitle = document.querySelectorAll('.stats-title');
 
 // Define an asynchronous function to fetch Pokémon data
 const getPokemon = async () => {
@@ -31,12 +34,22 @@ const getPokemon = async () => {
 
     // Pokémon info
     pokemonName.textContent = `${data.name.toUpperCase()}`;
-    pokemonID.textContent = `#${data.id}`;
+    let pokemonId = data.id;
+    let pokemonIdStr = pokemonId.toString();
+    let formattedId = pokemonIdStr.padStart(3, '0');
+    pokemonID.textContent = `#${formattedId}`;
     weight.textContent = `Weight: ${data.weight}`;
     height.textContent = `Height: ${data.height}`;
     pokemonSprite.innerHTML = `
       <img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">
     `;
+
+    statsTitle.forEach((el)=>{
+      el.style.display = "block";
+    });
+    backgroundGradient.style.display = "block";
+    title.style.display = "flex";
+    
 
     // stats
     hp.textContent = data.stats[0].base_stat;
@@ -54,6 +67,21 @@ const getPokemon = async () => {
       .map(slot => `<span class="type ${slot.type.name}">${slot.type.name}</span>`)
       // Join the array of HTML strings into a single string
       .join('');
+
+    if (data.types.length > 0) {
+      const firstType = data.types[0].type.name;
+
+      // Define the list of all possible type classes
+      const types = ["fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"];
+      types.forEach(type => {
+        backgroundGradient.classList.remove(`${type}-gradient`);
+        title.classList.remove(`${type}-gradient`);
+      });
+
+      // Add the new class for the current Pokémon's type
+      backgroundGradient.classList.add(`${firstType}-gradient`);
+      title.classList.add(`${firstType}-gradient`);
+    }
 
   } catch (err) {
     // If an error occurs during the fetch or JSON parsing, the catch block handles it and display an alert message.
@@ -87,4 +115,9 @@ const clearDisplay = () => {
   specialAttack.textContent = '';
   specialDefense.textContent = '';
   speed.textContent = '';
+  statsTitle.forEach((el)=>{
+    el.style.display = "none";
+  });
+  backgroundGradient.style.display = "none";
+  title.style.display = "none";
 };
