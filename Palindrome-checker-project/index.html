@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome checker</title>
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <div class="container">
-        <div id="top-image"> </div>
+        <div id="top-image">
+            <div id="image">
+                <img src="img/image.png" alt="image">
+            </div>
+        </div>
 
         <div id="checker">
             <h1>Is it a Palindrome?</h1>
-            <label for="text-input">Enter in text to check for a palindrome:</label>
-            <input id="text-input"></input>
+            <!-- <label for="text-input">Enter in text to check for a palindrome:</label> -->
+            <input id="text-input" placeholder="Enter in text to check"></input>
+
+            <div id="result"></div>
+
             <div id="btn">
                 <button id="check-btn">Check</button>
             </div>
             
-            <div id="result"></div>
         </div>
         
     </div>
