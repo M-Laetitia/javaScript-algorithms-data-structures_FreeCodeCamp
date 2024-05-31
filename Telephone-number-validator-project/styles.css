@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lekton:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #2a407a, #120f45);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    color: #38508d;
+}
+
+.container {
+    background-color: #f5faff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 415px;
+    min-height: 800px;
+    border-radius: 44px 44px 20px 20px;
+    overflow: hidden;
+}
+
+h1 {
+    transition: ease-in-out 0.3s;
+    padding-bottom: 1.9rem;
+}
+
+#top-image {
+    /* background-color: rgb(196, 196, 196); */
+    width: 100%;
+    min-height: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 3rem;
+
+    #image {
+        /* background-color: red; */
+        display: grid;
+        place-items: center;
+        width: 90%;
+        height: 90%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+#checker {
+    background-color: nlue;
+    width: 100%;
+    height:50%;
+    padding: 3rem 3rem;
+    text-align: center;
+}
+
+#check-btn, #clear-btn {
+    width: 320px;
+    height: 35px;
+
+    border: none;
+    border-radius:12px;
+    margin-top: 20px;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+        background-color:  #38508d;
+    }
+}
+
+#check-btn{
+    background-color: #fb7b78;
+}
+
+#clear-btn {
+    border:  2px solid #38508d;
+    color: #38508d;
+    background-color: #dfe6f0;
+
+    &:hover {
+        color:  white;
+    }
+}
+
+input {
+    border: none;
+    width: 320px;
+    height: 35px;
+    border-radius:12px;
+    padding: 1rem;
+}
+
+#results-div {
+    padding-top: .6rem;
+    padding-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 21px;
+}
