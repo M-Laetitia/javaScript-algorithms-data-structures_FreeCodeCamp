@@ -7,15 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <div id="top-image">
+            <div id="image">
+                <img src="img/image.png" alt="image">
+            </div>
+        </div>
 
-    <label for="user-input">Enter a phone number</label>
-    <input maxlength="20" type="tel" name="number" id="user-input" required>
+        <div id="checker">
+            <h1>Is it a correct number?</h1>
+            <!-- <label for="text-input">Enter in text to check for a palindrome:</label> 
+            <input id="text-input" placeholder="Enter in text to check"></input>-->
+            <label for="user-input"></label>
+            <input maxlength="20" type="tel" name="number" id="user-input"  placeholder="Enter in number to check" required>
 
-    <button id="check-btn">CHECK</button>
-    <button id="clear-btn">CLEAR</button>
+            <!-- <div id="result"></div> -->
+            <div id="results-div"></div>
 
-    <div id="results-div"></div>
+            <div id="btn">
+                <!--<button id="check-btn">Check</button>-->
+                <button id="check-btn">CHECK</button>
+                <button id="clear-btn">CLEAR</button>
+            </div>
+        </div>
 
+    </div>
 
     <script src="./script.js"></script>    
 </body>
