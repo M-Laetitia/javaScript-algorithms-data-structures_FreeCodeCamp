@@ -2,7 +2,8 @@
 
 const convertBtn = document.getElementById('convert-btn');
 const number = document.getElementById('number');
-const output = document.getElementById('output')
+const output = document.getElementById('output');
+const title = document.querySelector('h1');
 
 const correspondance =  [
   ['M', 1000],
@@ -21,6 +22,7 @@ const correspondance =  [
 ];
 
 function handleConversion() {
+ 
   const numStr = document.getElementById('number').value;
   const int = parseInt(numStr, 10);
 
@@ -29,6 +31,10 @@ function handleConversion() {
   }
 }
 
+number.addEventListener('click', ()=>{
+  title.style.color = '#e87570';
+})
+
 // event Listener
 convertBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -36,7 +42,7 @@ convertBtn.addEventListener('click', (e) => {
 });
 
 number.addEventListener("keydown", (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   if(e.key == "Enter"){
     handleConversion();
   }
